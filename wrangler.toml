@@ -23,20 +23,6 @@ directory = "./dist"
 binding = "ASSETS"
 not_found_handling = "404-page"
 html_handling = "drop-trailing-slash"
-# Host redirects need the Worker, but sitemap/robots must stay asset-first
-# so Google never hits a Worker/origin timeout (HTTP 522).
-run_worker_first = [
-  "/*",
-  "!/sitemap.xml",
-  "!/sitemap-pages.xml",
-  "!/sitemap-products.xml",
-  "!/sitemap-forums.xml",
-  "!/sitemap-images.xml",
-  "!/robots.txt",
-  "!/sitemap.css",
-  "!/favicon.svg",
-  "!/_astro/*",
-  "!/media/*",
-  "!/videos/*",
-  "!/og/*",
-]
+# All requests through Worker so www/HTTP redirects apply to sitemaps too.
+# Worker fetches via https://assets.local (never the custom domain) to avoid 522.
+run_worker_first = true
