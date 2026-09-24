@@ -66,8 +66,7 @@ function withSeoHeaders(pathname, response) {
   } else if (pathname.endsWith('.css')) {
     headers.set('content-type', 'text/css; charset=utf-8')
   } else if (pathname.endsWith('.xml')) {
-    // text/xml is widely accepted by GSC; keep charset explicit
-    headers.set('content-type', 'text/xml; charset=utf-8')
+    headers.set('content-type', 'application/xml; charset=utf-8')
   }
   headers.set('cache-control', 'public, max-age=3600')
   headers.set('x-content-type-options', 'nosniff')
