@@ -1,19 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://rustcheats.io/sitemap-pages.xml</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://rustcheats.io/</loc>
     <lastmod>2026-09-24</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://rustcheats.io/sitemap-products.xml</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-soldier-hero.jpg</image:loc>
+      <image:title>Rust Cheats gameplay screenshot</image:title>
+      <image:caption>In-game ESP and radar preview from Rust Cheats gameplay video.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-product-cover.webp</image:loc>
+      <image:title>Rust Cheats product cover still</image:title>
+      <image:caption>Gameplay still used as the product cover image.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-hero-poster.jpg</image:loc>
+      <image:title>Rust Cheats hero video poster</image:title>
+      <image:caption>Poster frame for the homepage hero gameplay clip.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/og/rust-cheats.jpg</image:loc>
+      <image:title>Rust Cheats social preview</image:title>
+      <image:caption>Open Graph image for rustcheats.io.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/reviews</loc>
     <lastmod>2026-09-24</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://rustcheats.io/sitemap-forums.xml</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/reviews" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-monument.jpg</image:loc>
+      <image:title>Rust Cheats review gameplay still</image:title>
+      <image:caption>Cheat gameplay still used on the reviews page.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/faq</loc>
     <lastmod>2026-09-24</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://rustcheats.io/sitemap-images.xml</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/faq" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-raid-party.jpg</image:loc>
+      <image:title>Rust Cheats ESP gameplay still</image:title>
+      <image:caption>ESP overlay gameplay still from the Rust Cheats video.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/support</loc>
     <lastmod>2026-09-24</lastmod>
-  </sitemap>
-</sitemapindex>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/support" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/support" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-product-preview-poster.jpg</image:loc>
+      <image:title>Rust Cheats support gameplay still</image:title>
+      <image:caption>Gameplay still for Rust Cheats loader setup and delivery support.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/status</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/status" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/status" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-soldier-hero.jpg</image:loc>
+      <image:title>Rust Cheats live status</image:title>
+      <image:caption>Status and changelog page for Undetected vs Updating after EAC patches.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/privacy</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/privacy" />
+    <image:image>
+      <image:loc>https://rustcheats.io/og/rust-cheats.jpg</image:loc>
+      <image:title>Rust Cheats social preview</image:title>
+      <image:caption>Open Graph image for rustcheats.io.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/terms</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/terms" />
+    <image:image>
+      <image:loc>https://rustcheats.io/og/rust-cheats.jpg</image:loc>
+      <image:title>Rust Cheats social preview</image:title>
+      <image:caption>Open Graph image for rustcheats.io.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/refunds</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.45</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/refunds" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/refunds" />
+    <image:image>
+      <image:loc>https://rustcheats.io/og/rust-cheats.jpg</image:loc>
+      <image:title>Rust Cheats social preview</image:title>
+      <image:caption>Open Graph image for rustcheats.io.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/rust-cheats</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/rust-cheats" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/rust-cheats" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-product-hero.webp</image:loc>
+      <image:title>Rust Cheats product gameplay preview</image:title>
+      <image:caption>In-match ESP and radar on the product page.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-product-cover.webp</image:loc>
+      <image:title>Rust Cheats product cover still</image:title>
+      <image:caption>Gameplay still used as the product cover image.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-raid-party.jpg</image:loc>
+      <image:title>Rust Cheats ESP gameplay still</image:title>
+      <image:caption>ESP overlay gameplay still from the Rust Cheats video.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/og/rust-cheats.jpg</image:loc>
+      <image:title>Rust Cheats social preview</image:title>
+      <image:caption>Open Graph image for rustcheats.io.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/forums</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/forums" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/forums" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-raid-party.jpg</image:loc>
+      <image:title>Rust Cheats guides</image:title>
+      <image:caption>Forum index artwork.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/forums/features-list</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/forums/features-list" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/forums/features-list" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-product-preview-poster.jpg</image:loc>
+      <image:title>Rust Cheats Features List guide artwork</image:title>
+      <image:caption>Guide artwork for Rust Cheats Features List.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/forums/hotkeys</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/forums/hotkeys" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/forums/hotkeys" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-hero-poster.jpg</image:loc>
+      <image:title>Rust Cheats Hotkeys guide artwork</image:title>
+      <image:caption>Guide artwork for Rust Cheats Hotkeys.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/forums/complete-setup</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/forums/complete-setup" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/forums/complete-setup" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-raid-party.jpg</image:loc>
+      <image:title>How to Complete Rust Cheats Setup guide artwork</image:title>
+      <image:caption>Guide artwork for How to Complete Rust Cheats Setup.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/forums/disable-antivirus</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/forums/disable-antivirus" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/forums/disable-antivirus" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-monument.jpg</image:loc>
+      <image:title>How to Turn Off Antivirus for Rust Cheats guide artwork</image:title>
+      <image:caption>Guide artwork for How to Turn Off Antivirus for Rust Cheats.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rustcheats.io/forums/undetected-status</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/forums/undetected-status" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/forums/undetected-status" />
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-soldier-hero.jpg</image:loc>
+      <image:title>Check Undetected Before You Buy or Load guide artwork</image:title>
+      <image:caption>Guide artwork for Check Undetected Before You Buy or Load.</image:caption>
+    </image:image>
+  </url>
+</urlset>

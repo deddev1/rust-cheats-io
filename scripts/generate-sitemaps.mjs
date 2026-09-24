@@ -1,6 +1,5 @@
 /**
- * Four child sitemaps + sitemap index at /sitemap.xml (GSC-friendly).
- * Every page URL appears once; every <url> has ≥1 image:image entry.
+ * Four child sitemaps + root /sitemap.xml urlset (GSC-friendly; not an HTML page).
  */
 import { existsSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -316,18 +315,26 @@ function buildImagesSitemap() {
   return wrapUrlset(entries)
 }
 
-function buildSitemapIndex() {
-  const blocks = CHILD_SITEMAPS.map(
-    (name) => `  <sitemap>
-    <loc>${escapeXml(siteUrl(`/${name}`))}</loc>
-    <lastmod>${TODAY}</lastmod>
-  </sitemap>`,
-  )
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${blocks.join('\n')}
-</sitemapindex>
-`
+function extractUrlBlocks(urlsetXml) {
+  return urlsetXml.match(/  <url>[\s\S]*?<\/url>/g) || []
+}
+
+/** Single crawler-facing sitemap — full urlset (not an index) so GSC never sees HTML 404 as “sitemap”. */
+function buildRootSitemap(games, forums) {
+  const blocks = [
+    ...extractUrlBlocks(buildPagesSitemap()),
+    ...extractUrlBlocks(buildProductsSitemap(games)),
+    ...extractUrlBlocks(buildForumsSitemap(forums)),
+  ]
+  const seen = new Set()
+  const unique = []
+  for (const block of blocks) {
+    const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1]
+    if (!loc || seen.has(loc)) continue
+    seen.add(loc)
+    unique.push(block)
+  }
+  return wrapUrlset(unique)
 }
 
 function parsePageLocs(xml) {
@@ -361,34 +368,42 @@ function validate(games, forums, staticRoutes, files) {
   ])
   const expectedUrls = new Set([...expectedRoutes].map(siteUrl))
 
-  const index = files['sitemap.xml']
-  if (!index.includes('<sitemapindex')) {
-    errors.push('sitemap.xml must be a sitemap index')
+  const root = files['sitemap.xml']
+  if (!root.includes('<urlset')) {
+    errors.push('sitemap.xml must be a urlset (not HTML, not a bare index-only file)')
+  }
+  if (root.includes('<sitemapindex') || root.includes('<html')) {
+    errors.push('sitemap.xml must not be a sitemapindex or HTML document')
+  }
+  if (root.includes('xml-stylesheet')) {
+    errors.push('sitemap.xml must not embed xml-stylesheet')
   }
   for (const name of CHILD_SITEMAPS) {
-    if (!index.includes(siteUrl(`/${name}`))) {
-      errors.push(`sitemap index missing child ${name}`)
-    }
     if (files[name].includes('<sitemapindex')) {
       errors.push(`${name} must be a urlset, not an index`)
     }
-    if (files[name].includes('xml-stylesheet')) {
-      errors.push(`${name} must not embed xml-stylesheet`)
+    if (files[name].includes('<html') || files[name].includes('xml-stylesheet')) {
+      errors.push(`${name} must be plain XML without HTML/stylesheet`)
     }
   }
 
-  const imageLocs = CHILD_SITEMAPS.flatMap((name) => parseImageLocs(files[name]))
+  const imageLocs = ['sitemap.xml', ...CHILD_SITEMAPS].flatMap((name) =>
+    parseImageLocs(files[name]),
+  )
   const contentLocs = CHILD_SITEMAPS.filter((n) => n !== 'sitemap-images.xml').flatMap((n) =>
     parsePageLocs(files[n]),
   )
+  const rootLocs = parsePageLocs(root)
   const uniqueContent = new Set(contentLocs)
+  const uniqueRoot = new Set(rootLocs)
 
-  if (uniqueContent.size !== expectedUrls.size) {
+  if (uniqueRoot.size !== expectedUrls.size) {
     errors.push(
-      `Expected ${expectedUrls.size} unique page URLs across pages/products/forums sitemaps, found ${uniqueContent.size}`,
+      `sitemap.xml expected ${expectedUrls.size} unique page URLs, found ${uniqueRoot.size}`,
     )
   }
   for (const url of expectedUrls) {
+    if (!uniqueRoot.has(url)) errors.push(`sitemap.xml missing page URL: ${url}`)
     if (!uniqueContent.has(url)) errors.push(`Page URL missing from content sitemaps: ${url}`)
   }
 
@@ -432,7 +447,7 @@ function main() {
     'sitemap-products.xml': buildProductsSitemap(games),
     'sitemap-forums.xml': buildForumsSitemap(forums),
     'sitemap-images.xml': buildImagesSitemap(),
-    'sitemap.xml': buildSitemapIndex(),
+    'sitemap.xml': buildRootSitemap(games, forums),
   }
 
   validate(games, forums, staticRoutes, files)
@@ -488,7 +503,7 @@ function main() {
     0,
   )
   console.log(
-    `Sitemap OK: index + ${CHILD_SITEMAPS.length} children, ${urlCount} total <url> rows (${expectedUrlCount(games, forums, staticRoutes)} indexable pages)`,
+    `Sitemap OK: root urlset + ${CHILD_SITEMAPS.length} children, ${urlCount} child <url> rows (${expectedUrlCount(games, forums, staticRoutes)} indexable pages)`,
   )
 }
 

@@ -169,17 +169,19 @@ const STALE_SITEMAPS = [
   'sitemap-index.xml',
   'sitemap_index.xml',
 ]
-const sitemapIndex = readFileSync(join(dist, 'sitemap.xml'), 'utf8')
-if (!sitemapIndex.includes('<sitemapindex')) fail('sitemap.xml must be a sitemap index')
-if (sitemapIndex.includes('xml-stylesheet')) {
+const sitemapRoot = readFileSync(join(dist, 'sitemap.xml'), 'utf8')
+if (!sitemapRoot.includes('<urlset')) fail('sitemap.xml must be a urlset')
+if (sitemapRoot.includes('<sitemapindex') || /<html[\s>]/i.test(sitemapRoot)) {
+  fail('sitemap.xml must not be a sitemapindex or HTML document')
+}
+if (sitemapRoot.includes('xml-stylesheet')) {
   fail('sitemap.xml must not embed xml-stylesheet (Worker injects it for browsers only)')
 }
-if (!sitemapIndex.trimStart().startsWith('<?xml version="1.0" encoding="UTF-8"?>')) {
+if (!sitemapRoot.trimStart().startsWith('<?xml version="1.0" encoding="UTF-8"?>')) {
   fail('sitemap.xml must start with an XML declaration')
 }
 for (const child of CHILD_SITEMAPS) {
-  const loc = `${site}/${child}`
-  if (!sitemapIndex.includes(loc)) fail(`sitemap index missing child ${loc}`)
+  if (!existsSync(join(dist, child))) fail(`dist/${child} is missing`)
 }
 
 const expectedUrls = new Set(

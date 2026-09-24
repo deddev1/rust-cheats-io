@@ -19,7 +19,6 @@ const SEO_FILES = new Set([
 
 function needsCanonicalRedirect(url) {
   const host = url.hostname.toLowerCase()
-  // Force HTTPS on the canonical host, or redirect www → rustcheats.io.
   return url.protocol === 'http:' || LEGACY_HOSTS.has(host)
 }
 
@@ -59,23 +58,65 @@ function withHtmlCharset(response) {
   })
 }
 
-function withSeoHeaders(pathname, response) {
-  const headers = new Headers(response.headers)
-  if (pathname === '/robots.txt') {
-    headers.set('content-type', 'text/plain; charset=utf-8')
-  } else if (pathname.endsWith('.css')) {
-    headers.set('content-type', 'text/css; charset=utf-8')
-  } else if (pathname.endsWith('.xml')) {
-    headers.set('content-type', 'application/xml; charset=utf-8')
-  }
-  headers.set('cache-control', 'public, max-age=3600')
-  headers.set('x-content-type-options', 'nosniff')
-  headers.set('x-robots-tag', 'noindex')
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
+function looksLikeHtml(text, contentType) {
+  const type = (contentType || '').toLowerCase()
+  if (type.includes('text/html')) return true
+  const head = text.slice(0, 256).toLowerCase()
+  return (
+    head.includes('<!doctype html') ||
+    head.includes('<html') ||
+    head.includes('<head>') ||
+    head.includes('<body')
+  )
+}
+
+function seoUnavailable() {
+  return new Response('SEO file temporarily unavailable\n', {
+    status: 503,
+    headers: {
+      'content-type': 'text/plain; charset=utf-8',
+      'retry-after': '120',
+      'cache-control': 'no-store',
+    },
   })
+}
+
+async function serveSeoFile(env, request, pathname, search) {
+  try {
+    const assetResponse = await assetsFetch(env, request, pathname + search)
+    if (assetResponse.status >= 500) return seoUnavailable()
+
+    const contentType = assetResponse.headers.get('content-type') || ''
+    const bodyText = await assetResponse.text()
+
+    // Never hand Google the HTML 404 page labeled as a sitemap
+    if (
+      assetResponse.status !== 200 ||
+      looksLikeHtml(bodyText, contentType) ||
+      (pathname.endsWith('.xml') && !bodyText.trimStart().startsWith('<?xml'))
+    ) {
+      return seoUnavailable()
+    }
+
+    const headers = new Headers()
+    if (pathname === '/robots.txt') {
+      headers.set('content-type', 'text/plain; charset=utf-8')
+    } else if (pathname.endsWith('.css')) {
+      headers.set('content-type', 'text/css; charset=utf-8')
+    } else if (pathname.endsWith('.xml')) {
+      headers.set('content-type', 'application/xml; charset=utf-8')
+    } else {
+      headers.set('content-type', contentType || 'text/plain; charset=utf-8')
+    }
+    headers.set('cache-control', 'public, max-age=300, must-revalidate')
+    headers.set('x-content-type-options', 'nosniff')
+    // Allow crawlers to use this URL as a sitemap (do not noindex the document itself in a confusing way)
+    headers.set('vary', 'Accept')
+
+    return new Response(bodyText, { status: 200, headers })
+  } catch {
+    return seoUnavailable()
+  }
 }
 
 export default {
@@ -88,31 +129,8 @@ export default {
 
     const pathname = url.pathname
 
-    // SEO files: never 500 to crawlers — soft-fail with 503 + Retry-After
     if (SEO_FILES.has(pathname)) {
-      try {
-        const assetResponse = await assetsFetch(env, request, pathname + url.search)
-        if (assetResponse.status >= 500) {
-          return new Response('SEO file temporarily unavailable\n', {
-            status: 503,
-            headers: {
-              'content-type': 'text/plain; charset=utf-8',
-              'retry-after': '120',
-              'cache-control': 'no-store',
-            },
-          })
-        }
-        return withSeoHeaders(pathname, assetResponse)
-      } catch {
-        return new Response('SEO file temporarily unavailable\n', {
-          status: 503,
-          headers: {
-            'content-type': 'text/plain; charset=utf-8',
-            'retry-after': '120',
-            'cache-control': 'no-store',
-          },
-        })
-      }
+      return serveSeoFile(env, request, pathname, url.search)
     }
 
     const assetResponse = await assetsFetch(env, request, pathname + url.search)
