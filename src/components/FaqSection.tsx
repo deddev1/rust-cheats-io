@@ -1,17 +1,22 @@
+import { ChevronDown } from 'lucide-react'
 import type { FaqItem } from '../data/faqs'
+import { renderLinkedText } from '../lib/linked-text'
 
 type FaqSectionProps = {
   id?: string
   heading: string
   intro?: string
   items: FaqItem[]
-  /** Extra class on the outer section */
   className?: string
+  footerHref?: string
+  footerLabel?: string
+  /** Top rule — default true */
+  bordered?: boolean
 }
 
 /**
- * Visible FAQ: real H2/H3 + answer text in the DOM.
- * Structured data comes from page-level FAQPage JSON-LD only (no duplicate microdata).
+ * Accordion FAQ: H2 + optional intro + chevron rows.
+ * Native <details> — no client JS required for open/close.
  */
 export function FaqSection({
   id = 'faq',
@@ -19,34 +24,57 @@ export function FaqSection({
   intro,
   items,
   className = '',
+  footerHref,
+  footerLabel = 'Full FAQ →',
+  bordered = true,
 }: FaqSectionProps) {
   return (
     <section
       id={id}
-      className={`page-x border-t border-z-soft/15 py-16 sm:py-20 ${className}`.trim()}
+      className={`page-x py-16 sm:py-20 ${bordered ? 'border-t border-white/[0.06]' : ''} ${className}`.trim()}
       aria-labelledby={`${id}-heading`}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-3xl">
         <h2
           id={`${id}-heading`}
-          className="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+          className="text-3xl font-semibold tracking-tight text-white sm:text-4xl"
         >
           {heading}
         </h2>
         {intro ? (
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/55 sm:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/50 sm:text-base">
             {intro}
           </p>
         ) : null}
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <div className="mt-10 border-t border-white/[0.08]">
           {items.map((item) => (
-            <article key={item.q} className="page-card rounded-2xl p-5 sm:p-6">
-              <h3 className="text-sm font-semibold text-white sm:text-base">{item.q}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{item.a}</p>
-            </article>
+            <details key={item.q} className="group border-b border-white/[0.08]">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left marker:content-none [&::-webkit-details-marker]:hidden">
+                <span className="pr-2 text-base font-semibold leading-snug text-white sm:text-lg">
+                  {item.q}
+                </span>
+                <ChevronDown
+                  className="mt-0.5 h-4 w-4 shrink-0 text-white/40 transition-transform duration-200 group-open:rotate-180"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
+              </summary>
+              <div className="pb-5 pr-10 text-sm leading-relaxed text-white/50 sm:text-base">
+                {renderLinkedText(item.a)}
+              </div>
+            </details>
           ))}
         </div>
+
+        {footerHref ? (
+          <a
+            href={footerHref}
+            className="mt-8 inline-flex text-sm font-medium text-z-soft transition-colors hover:text-z-ink"
+          >
+            {footerLabel}
+          </a>
+        ) : null}
       </div>
     </section>
   )

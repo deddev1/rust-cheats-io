@@ -1,214 +1,113 @@
 export type SeoMediaItem = {
-
   image: string
-
   video?: string
-
   alt: string
-
   title: string
-
   caption: string
-
   videoTitle?: string
-
   videoDescription?: string
-
 }
 
+export const RUST_SOLDIER_HERO = '/media/rust-soldier-hero.jpg'
+export const RUST_TACTICAL = '/media/rust-monument.jpg'
+export const RUST_OBJECTIVE = '/media/rust-raid-party.jpg'
 
-
-export const APEX_SOLDIER_HERO = '/media/apex-legends-soldier-hero.jpg'
-
-export const APEX_TACTICAL = '/media/apex-legends-battle-royale.jpg'
-
-export const APEX_OBJECTIVE = '/media/apex-legends-ranked-squad.jpg'
-
-
-
-/** Short muted loop for product card + select SeoMedia blocks (~640px, 6s). */
-
-export const APEX_CARD_LOOP_MP4 = '/videos/apex-card-loop.mp4'
-
-export const APEX_CARD_LOOP_WEBM = '/videos/apex-card-loop.webm'
-
-/** Product page gameplay clip from hero footage (~8s, 854px). */
-export const APEX_PRODUCT_PREVIEW_MP4 = '/videos/apex-product-preview.mp4'
-export const APEX_PRODUCT_PREVIEW_WEBM = '/videos/apex-product-preview.webm'
-export const APEX_PRODUCT_PREVIEW_POSTER = '/media/apex-legends-product-hero.webp'
+/** Short muted loop for product card + select SeoMedia blocks (~480px, 5s). */
+export const RUST_CARD_LOOP_MP4 = '/videos/rust-card-loop.mp4'
+/** @deprecated Prefer MP4 — kept for type compat; not shipped */
+export const RUST_CARD_LOOP_WEBM = '/videos/rust-card-loop.mp4'
+/** Product page gameplay clip (~6s, 720px, compact encode). */
+export const RUST_PRODUCT_PREVIEW_MP4 = '/videos/rust-product-preview.mp4'
+/** @deprecated Prefer MP4 — kept for type compat; not shipped */
+export const RUST_PRODUCT_PREVIEW_WEBM = '/videos/rust-product-preview.mp4'
+export const RUST_PRODUCT_PREVIEW_POSTER = '/media/rust-product-preview-poster.jpg'
+export const RUST_HERO_POSTER = '/media/rust-hero-poster.jpg'
 
 /** Embedded preview on the homepage. */
-
-export const APEX_HOME_VIDEO = {
-
-  id: 'bZ2kGpS_gQ4',
-
-  url: 'https://www.youtube.com/watch?v=bZ2kGpS_gQ4',
-
-  title: 'The BEST Apex CHEATS Are Finally Here..',
-
-  caption: 'Apex Legends cheats preview video on YouTube.',
-
+export const RUST_HOME_VIDEO = {
+  id: 'L2A6U1w0nJU',
+  url: 'https://www.youtube.com/watch?v=L2A6U1w0nJU',
+  title: 'Rust — Official Trailer',
+  caption: 'Official Rust survival gameplay on YouTube.',
 } as const
 
-
-
 export const PAGE_MEDIA = {
-
   home: {
-
-    image: APEX_SOLDIER_HERO,
-
-    alt: 'Apex Legends ESP overlay in live battle royale match',
-
-    title: 'Apex Legends Cheats for PC',
-
-    caption: 'Feature overview for Apex Legends ESP, radar and aim assistance.',
-
+    image: RUST_PRODUCT_PREVIEW_POSTER,
+    alt: 'Rust Cheats gameplay still with ESP overlay from product video',
+    title: 'Rust Cheats for PC',
+    caption: 'Feature overview for Rust Cheats ESP, Aimbot and wallhack.',
   },
-
   product: {
-
-    image: APEX_OBJECTIVE,
-
-    alt: 'Apex Legends player ESP and radar in ranked gameplay',
-
-    title: 'Apex Legends ESP, Radar and Aim Features',
-
-    caption: 'Product overview for current Apex Legends Windows builds.',
-
+    image: RUST_PRODUCT_PREVIEW_POSTER,
+    alt: 'Rust Cheats player ESP during live cheat gameplay',
+    title: 'Rust Cheats ESP, Aimbot and Wallhack',
+    caption: 'Product overview for current Rust Cheats Windows builds.',
   },
-
   forums: {
-
-    image: APEX_OBJECTIVE,
-
-    video: APEX_CARD_LOOP_MP4,
-
-    alt: 'Apex Legends ESP overlay during ranked gameplay',
-
-    title: 'Apex Legends Cheats Guides',
-
-    caption: 'Gameplay reference for setup, hotkeys, features and status articles.',
-
-    videoTitle: 'Short Apex Legends cheats gameplay loop',
-
+    image: RUST_SOLDIER_HERO,
+    video: RUST_CARD_LOOP_MP4,
+    alt: 'Rust Cheats ESP overlay during an online raid from cheat gameplay',
+    title: 'Rust Cheats Guides',
+    caption: 'Gameplay reference for Rust Cheats setup, hotkeys, features and status.',
+    videoTitle: 'Short Rust Cheats gameplay loop',
   },
-
   reviews: {
-
-    image: APEX_TACTICAL,
-
-    video: APEX_CARD_LOOP_MP4,
-
-    alt: 'Apex Legends player ESP and radar in live match',
-
-    title: 'Apex Legends Cheats Reviews',
-
-    caption: 'What buyers see in-game — ESP, radar and match performance.',
-
-    videoTitle: 'Apex Legends cheats review gameplay clip',
-
+    image: RUST_OBJECTIVE,
+    video: RUST_CARD_LOOP_MP4,
+    alt: 'Rust Cheats player ESP in a live match from cheat video',
+    title: 'Rust Cheats Reviews',
+    caption: 'What buyers see in-game — Rust Cheats ESP and match performance.',
+    videoTitle: 'Rust Cheats review gameplay clip',
   },
-
   faq: {
-
-    image: APEX_OBJECTIVE,
-
-    alt: 'Apex Legends ESP boxes and distance tags in match',
-
-    title: 'Apex Legends Cheats FAQ',
-
-    caption: 'Compatibility, status and setup answers for Apex Legends.',
-
+    image: RUST_TACTICAL,
+    alt: 'Rust Cheats ESP boxes and distance tags from cheat gameplay',
+    title: 'Rust Cheats FAQ',
+    caption: 'Compatibility, status and setup answers for Rust Cheats.',
   },
-
   support: {
-
-    image: APEX_TACTICAL,
-
-    alt: 'Apex Legends cheat overlay while aiming down sights',
-
-    title: 'Apex Legends Cheats Support',
-
-    caption: 'Delivery, loader and setup help for Apex Legends.',
-
+    image: RUST_PRODUCT_PREVIEW_POSTER,
+    alt: 'Rust Cheats overlay while aiming down sights from gameplay video',
+    title: 'Rust Cheats Support',
+    caption: 'Delivery, loader and setup help for Rust Cheats.',
   },
-
 } as const satisfies Record<string, SeoMediaItem>
 
-
-
+/** Unique still per forum slug — all frames from the Rust Cheats gameplay video. */
 const FORUM_MEDIA: Record<string, SeoMediaItem> = {
-
   'features-list': {
-
-    ...PAGE_MEDIA.product,
-
-    alt: 'Apex Legends player ESP radar and aim features in match',
-
-    title: 'Apex Legends Cheats Feature List',
-
-    caption: 'Reference for player ESP, loot ESP, radar and aim options.',
-
+    image: RUST_PRODUCT_PREVIEW_POSTER,
+    alt: 'Rust Cheats player ESP and Aimbot features in match',
+    title: 'Rust Cheats Feature List',
+    caption: 'Reference for player ESP, loot ESP, wallhack and Aimbot options.',
   },
-
   hotkeys: {
-
-    ...PAGE_MEDIA.home,
-
-    alt: 'Apex Legends ESP overlay used while configuring menu hotkeys',
-
-    title: 'ESP Menu Hotkey Preview',
-
-    caption: 'Reference for ESP, radar, aim and stream-proof hotkeys.',
-
+    image: RUST_HERO_POSTER,
+    alt: 'Rust Cheats ESP overlay used while configuring menu hotkeys',
+    title: 'Rust Cheats Menu Hotkey Preview',
+    caption: 'Reference for ESP, Aimbot and stream-proof hotkeys.',
   },
-
   'complete-setup': {
-
-    ...PAGE_MEDIA.product,
-
-    alt: 'Apex Legends cheats complete loader setup',
-
-    title: 'Complete Apex Legends Setup Preview',
-
+    image: RUST_OBJECTIVE,
+    alt: 'Rust Cheats complete loader setup',
+    title: 'Complete Rust Cheats Setup Preview',
     caption: 'Delivery, exclusions and clean load-order reference.',
-
   },
-
   'disable-antivirus': {
-
-    ...PAGE_MEDIA.home,
-
-    alt: 'Apex Legends cheats antivirus exclusion setup',
-
-    title: 'Loader Exclusion Setup Preview',
-
-    caption: 'Reference for antivirus exclusions before loading Apex Legends cheats.',
-
+    image: RUST_TACTICAL,
+    alt: 'Rust Cheats antivirus exclusion setup',
+    title: 'Rust Cheats Loader Exclusion Preview',
+    caption: 'Reference for antivirus exclusions before loading Rust Cheats.',
   },
-
   'undetected-status': {
-
-    ...PAGE_MEDIA.product,
-
-    alt: 'Apex Legends cheats current product status',
-
-    title: 'Apex Legends Loader Status Preview',
-
+    image: RUST_SOLDIER_HERO,
+    alt: 'Rust Cheats current product status',
+    title: 'Rust Cheats Loader Status Preview',
     caption: 'Reference for checking Undetected or Updating before loading.',
-
   },
-
 }
-
-
 
 export function getForumMedia(slug: string): SeoMediaItem {
-
   return FORUM_MEDIA[slug] || PAGE_MEDIA.forums
-
 }
-
-

@@ -11,6 +11,10 @@ export type BlogPost = {
   metaDescription: string
   searchTerms: string
   date: string
+  /** ISO date when the guide was last verified against current status. */
+  dateModified: string
+  /** Short display string for “Last checked” near the title. */
+  lastChecked: string
   readMinutes: number
   tag: string
   sections: BlogSection[]
@@ -23,21 +27,23 @@ export type BlogPost = {
 export const BLOGS: BlogPost[] = [
   {
     slug: 'features-list',
-    title: 'Apex Legends Cheats Features List',
+    title: 'Rust Cheats Features List',
     excerpt:
-      'Full features list before you buy Apex Legends Cheats — player ESP, loot ESP, radar, soft aim and stream-proof options.',
-    metaTitle: 'Apex Legends ESP, Radar & Soft Aim Feature List',
+      'Full features list before you buy Rust Cheats — player ESP, loot ESP, soft aim Aimbot and stream-proof options.',
+    metaTitle: 'Rust Cheats ESP, Wallhack & Soft Aim Feature List',
     metaDescription:
-      'Compare Apex Legends player ESP, loot ESP, 2D radar, soft aim and stream-proof features included before checkout.',
-    searchTerms: 'features player esp loot esp radar soft aim stream-proof',
+      'Compare Rust Cheats player ESP, loot ESP, wallhack, soft aim Aimbot, HWID spoofer and stream-proof features included before you checkout on Steam.',
+    searchTerms: 'features player esp loot esp wallhack soft aim stream-proof aimbot spoofer hwid',
     date: '2026-09-15',
+    dateModified: '2026-09-20',
+    lastChecked: 'Sep 20, 2026',
     readMinutes: 6,
     tag: 'Features',
     sections: [
       {
         heading: 'What you get when you buy',
         body: [
-          'Apex Legends Cheats is one product for Apex Legends on Windows PC. You are buying a loader + license with live Undetected / Updating status on apexlegendscheats.org — not a random multi-game pack.',
+          'Rust Cheats is one product for Rust on Windows PC. You are buying a loader + license with live Undetected / Updating status on rustcheats.io — not a pack for other games.',
           'Open the product page, confirm status, then checkout. Delivery is digital on supported builds.',
         ],
       },
@@ -46,37 +52,40 @@ export const BLOGS: BlogPost[] = [
         body: [
           'Player ESP / wallhack — boxes, skeletons, distance and health through terrain and buildings.',
           'Loot ESP — weapons, armor, attachments, healing items and death boxes with configurable filters.',
-          '2D radar — map-style awareness for off-screen threats.',
-          'Soft aim — adjustable FOV, smoothing and hitbox; leave it off if you only want ESP.',
+          'Off-screen finder — awareness for threats outside your FOV.',
+          'Soft aim Aimbot — adjustable FOV, smoothing and hitbox; leave it off if you only want ESP.',
+          'HWID Spoofer — optional hardware ID spoof when the current Undetected build lists spoofer support; skip it if you only need ESP.',
           'Stream-proof — hide supported overlays from capture when you clip or go live.',
-          'Config save/load — keep your setup between sessions.',
+          'Config save/load — keep your Rust Cheats setup between sessions.',
         ],
       },
       {
         heading: 'Next step',
         body: [
-          'Read the hotkeys and setup guides, then buy Apex Legends Cheats when status is Undetected.',
+          'Read the hotkeys and setup guides, then buy Rust Cheats when status is Undetected.',
         ],
       },
     ],
   },
   {
     slug: 'hotkeys',
-    title: 'Apex Legends Cheats Hotkeys',
+    title: 'Rust Cheats Hotkeys',
     excerpt:
-      'Hotkeys and menu keys for Apex Legends Cheats after load — open menu, toggles, and what to leave unbound.',
-    metaTitle: 'Apex Legends ESP Menu Hotkeys | Post-Checkout Setup',
+      'Hotkeys and menu keys for Rust Cheats after load — open menu, toggles, and what to leave unbound.',
+    metaTitle: 'Rust ESP Menu Hotkeys | Post-Checkout Setup',
     metaDescription:
-      'Hotkeys for Apex Legends Cheats after you buy and load: open menu, ESP toggles, radar, soft aim. Simple key list for Apex Legends.',
-    searchTerms: 'hotkeys menu keys esp toggle radar soft aim',
+      'Hotkeys for Rust Cheats after you buy and load: open menu, ESP toggles, wallhack, soft aim Aimbot and spoofer keys — simple key list for Steam Rust.',
+    searchTerms: 'hotkeys menu keys esp toggle wallhack soft aim aimbot spoofer',
     date: '2026-09-15',
+    dateModified: '2026-09-20',
+    lastChecked: 'Sep 20, 2026',
     readMinutes: 4,
     tag: 'Hotkeys',
     sections: [
       {
         heading: 'After load',
         body: [
-          'Buy Apex Legends Cheats, check Undetected, launch the game, run the loader, wait for a clean inject. Then open the menu with the key listed in your delivery notes (build-specific).',
+          'Buy Rust Cheats, check Undetected, launch the game, run the loader, wait for a clean inject. Then open the menu with the key listed in your delivery notes (build-specific).',
           'If the menu does not open, do not spam keys — reopen support with your order ID and build name.',
         ],
       },
@@ -85,36 +94,38 @@ export const BLOGS: BlogPost[] = [
         body: [
           'Menu open / close — always learn this first.',
           'ESP master toggle — turn player ESP on/off without digging panels.',
-          'Radar toggle — same idea for the 2D radar.',
-          'Soft aim toggle — leave unbound if you run visuals only.',
+          'Off-screen finder toggle — same idea for awareness outside your FOV.',
+          'Soft aim Aimbot toggle — leave unbound if you run visuals only.',
           'Stream-proof — flip before you start OBS or clips.',
         ],
       },
       {
         heading: 'Keep it simple',
         body: [
-          'Bind only what you use. Extra binds get pressed mid-fight and look obvious. Save your layout once, then re-check status after every Apex Legends patch before you load again.',
+          'Bind only what you use. Extra binds get pressed mid-fight and look obvious. Save your layout once, then re-check status after every Rust patch before you load again.',
         ],
       },
     ],
   },
   {
     slug: 'complete-setup',
-    title: 'How to Complete Apex Legends Cheats Setup',
+    title: 'How to Complete Rust Cheats Setup',
     excerpt:
-      'Complete setup for Apex Legends Cheats: buy, disable blockers, launch Apex Legends, load, enable ESP, confirm hotkeys.',
-    metaTitle: 'Complete Apex Legends Loader Setup & Load Order',
+      'Complete setup for Rust Cheats: buy, disable blockers, launch Rust, load, enable ESP, confirm hotkeys.',
+    metaTitle: 'Complete Rust Loader Setup & Load Order',
     metaDescription:
-      'Complete setup after checkout: delivery checklist, antivirus exclusions, Apex Legends load order, troubleshooting, ESP configuration and hotkeys.',
-    searchTerms: 'complete setup instructions load checklist loader order',
+      'Complete setup after checkout: delivery checklist, antivirus exclusions, Rust load order, troubleshooting, ESP configuration and hotkeys.',
+    searchTerms: 'complete setup instructions load checklist loader order esp enable wallhack',
     date: '2026-09-15',
+    dateModified: '2026-09-20',
+    lastChecked: 'Sep 20, 2026',
     readMinutes: 7,
     tag: 'Setup',
     sections: [
       {
         heading: '1) Buy and confirm status',
         body: [
-          'Open Buy Apex Legends Cheats on apexlegendscheats.org. If status is Updating, wait. If Undetected, checkout and use only the official delivery link from this site.',
+          'Open Buy Rust Cheats on rustcheats.io. If status is Updating, wait. If Undetected, checkout and use only the official delivery link from this site.',
         ],
       },
       {
@@ -128,17 +139,17 @@ export const BLOGS: BlogPost[] = [
       {
         heading: '3) Load order',
         body: [
-          'Start Apex Legends on Steam.',
-          'Run the Apex Legends Cheats loader / license as delivered.',
+          'Start Rust on Steam.',
+          'Run the Rust Cheats loader / license as delivered.',
           'Wait for a successful load.',
-          'Open the menu → player ESP on → loot ESP on → radar on → stream-proof if you record.',
-          'Soft aim off unless you specifically want it.',
+          'Open the menu → player ESP on → loot ESP on → off-screen finder on → stream-proof if you record.',
+          'Soft aim Aimbot off unless you specifically want it.',
         ],
       },
       {
         heading: '4) Save and re-check after patches',
         body: [
-          'Save the config. After any Apex Legends / EAC update, check Undetected again before you load. Setup means nothing on a detected build.',
+          'Save the config. After any Rust / EAC update, check Undetected again before you load. Setup means nothing on a detected build.',
         ],
       },
       {
@@ -160,28 +171,30 @@ export const BLOGS: BlogPost[] = [
   },
   {
     slug: 'disable-antivirus',
-    title: 'How to Turn Off Antivirus for Apex Legends Cheats',
+    title: 'How to Turn Off Antivirus for Rust Cheats',
     excerpt:
-      'Turn off or allowlist antivirus so Apex Legends Cheats loader can run after purchase — Windows Defender and common AV steps.',
-    metaTitle: 'Apex Legends Loader Antivirus Exclusions | Windows Defender',
+      'Turn off or allowlist antivirus so Rust Cheats loader can run after purchase — Windows Defender and common AV steps.',
+    metaTitle: 'Rust Loader Antivirus Exclusions | Windows Defender',
     metaDescription:
-      'How to turn off or allowlist antivirus for Apex Legends Cheats after you buy — Defender exclusions, false positives, then load on Undetected.',
+      'How to turn off or allowlist antivirus for Rust Cheats after you buy — Defender exclusions, false positives, then load on Undetected.',
     searchTerms: 'disable antivirus defender exclusion allowlist loader false positive',
     date: '2026-09-15',
+    dateModified: '2026-09-20',
+    lastChecked: 'Sep 20, 2026',
     readMinutes: 5,
     tag: 'Antivirus',
     sections: [
       {
         heading: 'Why this step exists',
         body: [
-          'Cheat loaders are often flagged as generic “trojan” heuristics even when you bought Apex Legends Cheats from apexlegendscheats.org. That blocks the load. Fix the AV step before you spam the loader.',
+          'Cheat loaders are often flagged as generic “trojan” heuristics even when you bought Rust Cheats from rustcheats.io. That blocks the load. Fix the AV step before you spam the loader.',
         ],
       },
       {
         heading: 'Windows Defender (common path)',
         body: [
           'Open Windows Security → Virus & threat protection → Manage settings.',
-          'Add an exclusion for the folder that holds your official Apex Legends Cheats loader (the path from your delivery email).',
+          'Add an exclusion for the folder that holds your official Rust Cheats loader (the path from your delivery email).',
           'If the file was already quarantined, restore it from Protection history, then exclude the folder.',
           'Optional short window: pause real-time protection only while you load, then turn it back on. Prefer a permanent exclusion for the delivery folder over leaving Defender off all day.',
         ],
@@ -205,19 +218,21 @@ export const BLOGS: BlogPost[] = [
     slug: 'undetected-status',
     title: 'Check Undetected Before You Buy or Load',
     excerpt:
-      'Undetected vs Updating for Apex Legends Cheats — check status before checkout and before every load after a Apex Legends patch.',
-    metaTitle: 'Apex Legends Loader Status | Undetected or Updating',
+      'Undetected vs Updating for Rust Cheats — check status before checkout and before every load after a Rust patch.',
+    metaTitle: 'Rust Loader Status | Undetected or Updating',
     metaDescription:
-      'Check the current Undetected or Updating state before checkout and before loading after a Apex Legends or EAC patch.',
-    searchTerms: 'undetected status updating eac patch load checkout',
+      'Check live Undetected or Updating status for Rust Cheats before checkout and before every load after a Rust or Easy Anti-Cheat patch on Steam.',
+    searchTerms: 'undetected status updating eac patch load checkout changelog',
     date: '2026-09-15',
+    dateModified: '2026-09-20',
+    lastChecked: 'Sep 20, 2026',
     readMinutes: 4,
     tag: 'Status',
     sections: [
       {
         heading: 'Status is part of the purchase',
         body: [
-          'Do not buy or load blind. The product page shows Undetected or Updating after Apex Legends / EAC patches. That status is the go / no-go for Apex Legends Cheats.',
+          'Do not buy or load blind. The product page shows Undetected or Updating after Rust / EAC patches. That status is the go / no-go for Rust Cheats.',
         ],
       },
       {
@@ -241,4 +256,4 @@ export function getBlog(slug: string) {
   return BLOGS.find((b) => b.slug === slug)
 }
 
-export { blogPath } from './blog-paths'
+export { blogPath, sectionId, blogSectionPath } from './blog-paths'

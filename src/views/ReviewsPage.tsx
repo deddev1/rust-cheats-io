@@ -38,12 +38,12 @@ export function ReviewsPage() {
               {SITE_NAME} · Community reviews
             </p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-              Apex Legends Cheats Reviews
+              Rust Cheats Reviews
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/55">
-              Apex Legends Cheats reviews before you buy — ESP accuracy, Undetected honesty, and
+              Rust Cheats reviews before you buy — ESP accuracy, Undetected honesty, and
               whether the build held after the last patch. See the{' '}
-              <a href="/apex-legends-cheats" className="text-white/80 underline-offset-2 hover:underline">
+              <a href="/rust-cheats" className="text-white/80 underline-offset-2 hover:underline">
                 features &amp; price
               </a>
               ,{' '}
@@ -54,9 +54,9 @@ export function ReviewsPage() {
               <a href="/forums" className="text-white/80 underline-offset-2 hover:underline">
                 setup forums
               </a>
-              . Play Apex Legends via{' '}
+              . Play Rust via{' '}
               <a
-                href="https://store.steampowered.com/app/1172470/Apex_Legends/"
+                href="https://store.steampowered.com/app/252490/Rust/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 underline-offset-2 hover:underline"
@@ -66,7 +66,7 @@ export function ReviewsPage() {
               .
             </p>
             <p className="mt-3 text-sm text-white/45" aria-label="Aggregate rating">
-              Average {aggregate.ratingValue} / 5 from {aggregate.reviewCount} Apex Legends Cheats
+              Average {aggregate.ratingValue} / 5 from {aggregate.reviewCount} Rust Cheats
               reviews
             </p>
           </div>
@@ -83,10 +83,9 @@ export function ReviewsPage() {
           className="relative mt-10 border-y border-z-soft/20 bg-z-band sm:mt-12"
         >
           <LocalVideoStrip
-            src="/videos/reviews-neon"
+            src="/videos/rust-card-loop"
             startAt={0}
-            eager
-            poster="/media/apex-legends-ranked-squad.jpg"
+            poster="/media/rust-product-preview-poster.jpg"
             className="video-strip--reviews"
           />
         </section>
@@ -94,7 +93,7 @@ export function ReviewsPage() {
         <section className="page-x py-14 sm:py-16">
           <div className="mx-auto max-w-6xl">
             <h2 className="mb-6 text-xl font-semibold tracking-tight text-white">
-              Latest Apex Legends Cheats feedback
+              Latest Rust Cheats feedback
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {REVIEWS.map((review) => (
@@ -143,7 +142,7 @@ export function ReviewsPage() {
                 Next step
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                Ready to buy Apex Legends Cheats?
+                Ready to buy Rust Cheats?
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/55">
                 Open the guide, confirm Undetected status, then checkout — or visit{' '}
@@ -155,7 +154,7 @@ export function ReviewsPage() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
               <a
-                href="/apex-legends-cheats"
+                href="/rust-cheats"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/5"
               >
                 Feature list

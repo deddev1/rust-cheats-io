@@ -1,7 +1,7 @@
 # Hero / strip videos
 
-- `apex-hero.webm` + `apex-hero.mp4` — homepage hero background (720p30, no audio)
-- `apex-product-preview.*` — product page clip (~10s, 960px; built from hero via `npm run generate:seo-assets`)
-- `apex-card-loop.*` — buy card + forums/reviews loops (~6s, 640px)
-- `home-wave.webm` + `home-wave.mp4` — home footer strip (webm + h264)
-- `reviews-neon.webm` + `reviews-neon.mp4` — reviews page strip
+- `rust-hero.mp4` — homepage / forums hero background (compact 720p loop; poster is LCP)
+- `rust-product-preview.mp4` — product preview (click-to-play) + deferred strips
+- `rust-card-loop.mp4` — buy card + reviews/forums loops
+
+Deliver MP4 only (smaller than prior WebM encodes). Do not autoplay heavy clips above the fold.

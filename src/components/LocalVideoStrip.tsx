@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { getResponsiveSpec } from '../data/responsive-images'
 import { ResponsiveImage } from './ResponsiveImage'
 
-const REVIEWS_VIDEO = '/videos/reviews-neon'
+const REVIEWS_VIDEO = '/videos/rust-card-loop'
 
 type LocalVideoStripProps = {
   className?: string
-  /** Path without extension, e.g. `/videos/home-wave` — serves .webm + .mp4 */
+  /** Path without extension, e.g. `/videos/rust-card-loop` — serves .mp4 */
   src?: string
   /** Optional soft seek after playback starts (seconds). Prefer 0 for reliability. */
   startAt?: number
-  /** Start loading immediately (home / reviews strips) */
+  /** @deprecated Prefer lazy IO — kept for API compat, ignored for Lighthouse */
   eager?: boolean
   poster?: string
   posterAlt?: string
@@ -23,6 +23,14 @@ function prefersReducedMotion() {
   )
 }
 
+function saveDataOrSlow() {
+  if (typeof navigator === 'undefined') return false
+  const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
+    .connection
+  if (conn?.saveData) return true
+  return conn?.effectiveType === 'slow-2g' || conn?.effectiveType === '2g'
+}
+
 function stripBase(src: string) {
   return src.replace(/\.(webm|mp4)$/i, '')
 }
@@ -31,19 +39,18 @@ export function LocalVideoStrip({
   className = '',
   src = REVIEWS_VIDEO,
   startAt = 0,
-  eager = false,
-  poster = '/media/apex-legends-battle-royale.jpg',
-  posterAlt = 'Apex Legends ranked squad gameplay still',
+  poster = '/media/rust-product-preview-poster.jpg',
+  posterAlt = 'Rust cheats gameplay still from product video',
 }: LocalVideoStripProps) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const ref = useRef<HTMLVideoElement>(null)
   const [visible, setVisible] = useState(false)
-  const [active, setActive] = useState(eager)
+  const [active, setActive] = useState(false)
   const [failed, setFailed] = useState(false)
   const base = stripBase(src)
 
   useEffect(() => {
-    if (eager) return
+    if (prefersReducedMotion() || saveDataOrSlow()) return
 
     const root = wrapRef.current
     if (!root) return
@@ -55,11 +62,11 @@ export function LocalVideoStrip({
           io.disconnect()
         }
       },
-      { rootMargin: '600px 0px', threshold: 0 },
+      { rootMargin: '120px 0px', threshold: 0.01 },
     )
     io.observe(root)
     return () => io.disconnect()
-  }, [eager])
+  }, [])
 
   useEffect(() => {
     if (!active) return
@@ -93,7 +100,7 @@ export function LocalVideoStrip({
           video.currentTime = startAt
         }
       } catch {
-        /* ignore seek failures — keep playing from current frame */
+        /* ignore */
       }
     }
 
@@ -107,7 +114,6 @@ export function LocalVideoStrip({
         .play()
         .then(() => {
           show()
-          // Seek only after playback has started so autoplay is not aborted.
           seekTimer = setTimeout(softSeek, 250)
         })
         .catch(() => {
@@ -142,7 +148,7 @@ export function LocalVideoStrip({
     video.addEventListener('error', onError)
     document.addEventListener('visibilitychange', onVisibility)
 
-    showTimer = setTimeout(show, 900)
+    showTimer = setTimeout(show, 1200)
 
     if (video.readyState >= 2) play()
     else video.load()
@@ -188,7 +194,7 @@ export function LocalVideoStrip({
           autoPlay
           playsInline
           loop
-          preload="auto"
+          preload="none"
           poster={poster}
           controls={false}
           disablePictureInPicture
@@ -196,7 +202,6 @@ export function LocalVideoStrip({
           aria-hidden
           tabIndex={-1}
         >
-          <source src={`${base}.webm`} type="video/webm" />
           <source src={`${base}.mp4`} type="video/mp4" />
         </video>
       ) : null}

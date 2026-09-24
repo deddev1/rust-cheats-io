@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Navbar } from '../components/Navbar'
 import { SiteFooter } from '../components/SiteFooter'
-import { BLOGS, blogPath, getBlog } from '../data/blogs'
+import { BLOGS, blogPath, getBlog, sectionId } from '../data/blogs'
 import { guidePath } from '../data/games'
 import { CheckoutLink } from '../components/CheckoutLink'
 import { SeoMedia } from '../components/SeoMedia'
@@ -11,14 +11,6 @@ import { NotFoundPage } from './NotFoundPage'
 
 type BlogPostPageProps = {
   slug: string
-}
-
-function sectionId(heading: string) {
-  return heading
-    .replace(/^\d+\)\s*/, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '')
 }
 
 export function BlogPostPage({ slug }: BlogPostPageProps) {
@@ -58,6 +50,9 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
               {post.title}
             </h1>
+            <p className="mt-2 text-xs text-white/40">
+              Last checked: {post.lastChecked}
+            </p>
             <p className="mt-4 text-base leading-relaxed text-white/60 sm:text-lg">
               {post.excerpt}
             </p>
@@ -81,11 +76,11 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
 
             <div className="page-card mt-12 rounded-2xl p-6 sm:p-8">
               <h2 className="text-lg font-semibold text-white">
-                Ready for Apex Legends Cheats?
+                Ready for Rust Cheats?
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-white/55">
-                Check live Undetected status, then buy ESP, wallhack, and spoofer for
-                Apex Legends on {SITE_HOST}. Need help? Read{' '}
+                Check live Undetected status, then buy ESP, wallhack, soft aim and HWID
+                spoofer for Rust on {SITE_HOST}. Need help? Read{' '}
                 <a href="/support" className="text-white/80 underline-offset-2 hover:underline">
                   loader help
                 </a>
@@ -95,7 +90,7 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
                 </a>
                 . Own the game via{' '}
                 <a
-                  href="https://store.steampowered.com/app/1172470/Apex_Legends/"
+                  href="https://store.steampowered.com/app/252490/Rust/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 underline-offset-2 hover:underline"
@@ -106,10 +101,10 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
-                  href={guidePath('apex-legends')}
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/5"
+                  href="/rust-cheats"
+                  className="cta-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium text-white"
                 >
-                  Open product
+                  Buy Rust Cheats
                 </a>
                 <a
                   href="/faq"
@@ -117,7 +112,7 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
                 >
                   FAQ
                 </a>
-                <CheckoutLink className="cta-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium text-white">
+                <CheckoutLink className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/5">
                   Checkout
                 </CheckoutLink>
               </div>

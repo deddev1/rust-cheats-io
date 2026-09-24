@@ -31,28 +31,27 @@ export function ForumsPage({ initialQuery = '' }: ForumsPageProps) {
   }, [q])
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-z-bg text-white">
-      <section className="relative flex min-h-[60vh] flex-col overflow-x-clip sm:min-h-[65vh]">
+    <div className="min-h-screen overflow-x-clip bg-z-bg text-white">
+      <section className="relative flex min-h-[60vh] flex-col overflow-visible sm:min-h-[65vh]">
         <VideoBg />
-        <div className="relative z-20 flex min-h-[60vh] flex-col sm:min-h-[65vh]">
+        <div className="relative z-20 flex min-h-[60vh] flex-col overflow-visible sm:min-h-[65vh]">
           <Navbar onVideo />
-          <div className="page-x mt-auto pb-10 sm:pb-14">
-            <div className="relative z-30 mx-auto max-w-6xl">
+          <div className="page-x mt-auto overflow-visible pb-10 sm:pb-14">
+            <div className="relative z-30 mx-auto max-w-6xl overflow-visible">
               <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-white/50">
                 Forums · Setup · {SITE_HOST}
               </p>
               <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-                Apex Legends Cheats guides &amp; forums
+                Rust Cheats guides &amp; forums
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70">
-                Setup guides for Apex Legends Cheats — features, hotkeys, complete setup,
+                Setup guides for Rust Cheats — features, hotkeys, complete setup,
                 antivirus exclusions, load order and Undetected status before checkout.
               </p>
-              <div className="relative z-50 mt-7">
+              <div className="relative z-[60] mt-7 overflow-visible">
                 <HeroSearch
                   value={q}
                   onChange={onSearchChange}
-                  submitTo="filter"
                   placeholder="Search forums — setup, antivirus, hotkeys…"
                 />
               </div>
@@ -69,14 +68,14 @@ export function ForumsPage({ initialQuery = '' }: ForumsPageProps) {
             <div className="page-card mb-10 flex flex-col gap-4 rounded-2xl p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
               <div>
                 <p className="text-xs uppercase tracking-wider text-white/45">Product</p>
-                <h2 className="mt-1 text-xl font-semibold text-white">Apex Legends Cheats</h2>
+                <h2 className="mt-1 text-xl font-semibold text-white">Rust Cheats</h2>
                 <p className="mt-2 max-w-xl text-sm text-white/55">
-                  Buy undetected ESP, wallhack & spoofer for Apex Legends — live status before
-                  checkout.
+                  Buy Rust Cheats with player ESP, wallhack, soft aim and HWID spoofer —
+                  confirm live status before checkout.
                 </p>
               </div>
               <a
-                href={guidePath('apex-legends')}
+                href={guidePath('rust')}
                 className="cta-gradient inline-flex shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-white"
               >
                 Open product

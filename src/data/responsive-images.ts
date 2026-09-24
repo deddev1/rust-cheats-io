@@ -8,34 +8,42 @@ export type ResponsiveImageSpec = {
 
 /** Responsive WebP + JPEG fallbacks for in-page gameplay stills. */
 export const RESPONSIVE_BY_FALLBACK: Record<string, ResponsiveImageSpec> = {
-  '/media/apex-legends-soldier-hero.jpg': {
-    fallback: '/media/apex-legends-soldier-hero.jpg',
+  '/media/rust-soldier-hero.jpg': {
+    fallback: '/media/rust-soldier-hero.jpg',
     webpSrcSet:
-      '/media/apex-legends-soldier-hero-480w.webp 480w, /media/apex-legends-soldier-hero-800w.webp 800w',
+      '/media/rust-soldier-hero-480w.webp 480w, /media/rust-soldier-hero-800w.webp 800w',
     width: 800,
     height: 450,
     sizes: '(max-width: 1024px) 100vw, 800px',
   },
-  '/media/apex-legends-battle-royale.jpg': {
-    fallback: '/media/apex-legends-battle-royale.jpg',
+  '/media/rust-monument.jpg': {
+    fallback: '/media/rust-monument.jpg',
     webpSrcSet:
-      '/media/apex-legends-battle-royale-480w.webp 480w, /media/apex-legends-battle-royale-800w.webp 800w',
+      '/media/rust-monument-480w.webp 480w, /media/rust-monument-800w.webp 800w',
     width: 800,
     height: 450,
     sizes: '(max-width: 1024px) 100vw, 800px',
   },
-  '/media/apex-legends-ranked-squad.jpg': {
-    fallback: '/media/apex-legends-ranked-squad.jpg',
+  '/media/rust-raid-party.jpg': {
+    fallback: '/media/rust-raid-party.jpg',
     webpSrcSet:
-      '/media/apex-legends-ranked-squad-480w.webp 480w, /media/apex-legends-ranked-squad-800w.webp 800w',
+      '/media/rust-raid-party-480w.webp 480w, /media/rust-raid-party-800w.webp 800w',
     width: 800,
     height: 450,
     sizes: '(max-width: 1024px) 100vw, 800px',
   },
-  '/media/apex-legends-product-hero.webp': {
-    fallback: '/media/apex-legends-product-hero.webp',
+  '/media/rust-product-preview-poster.jpg': {
+    fallback: '/media/rust-product-preview-poster.jpg',
     webpSrcSet:
-      '/media/apex-legends-product-hero-480w.webp 480w, /media/apex-legends-product-hero-800w.webp 800w, /media/apex-legends-product-hero.webp 1280w',
+      '/media/rust-product-hero-480w.webp 480w, /media/rust-product-hero-800w.webp 800w, /media/rust-product-hero.webp 1280w',
+    width: 1280,
+    height: 720,
+    sizes: '(max-width: 1024px) 100vw, 640px',
+  },
+  '/media/rust-product-hero.webp': {
+    fallback: '/media/rust-product-hero.webp',
+    webpSrcSet:
+      '/media/rust-product-hero-480w.webp 480w, /media/rust-product-hero-800w.webp 800w, /media/rust-product-hero.webp 1280w',
     width: 1280,
     height: 720,
     sizes: '(max-width: 1024px) 100vw, 640px',

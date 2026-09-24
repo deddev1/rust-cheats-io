@@ -3,94 +3,80 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://apexlegendscheats.org/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://rustcheats.io/</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/media/apex-legends-soldier-hero.jpg</image:loc>
-      <image:title>Apex Legends Cheats gameplay screenshot</image:title>
-      <image:caption>In-game ESP and radar preview for Apex Legends Cheats on PC.</image:caption>
+      <image:loc>https://rustcheats.io/media/rust-soldier-hero.jpg</image:loc>
+      <image:title>Rust Cheats gameplay screenshot</image:title>
+      <image:caption>In-game ESP and radar preview from Rust Cheats gameplay video.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/og/rust-cheats.jpg</image:loc>
+      <image:title>Rust Cheats social preview</image:title>
+      <image:caption>Open Graph image for rustcheats.io.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rustcheats.io/media/rust-hero-poster.jpg</image:loc>
+      <image:title>Rust Cheats hero video poster</image:title>
+      <image:caption>Poster frame for the homepage hero gameplay clip.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://apexlegendscheats.org/reviews</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://rustcheats.io/reviews</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/reviews" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/reviews" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/reviews" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/media/apex-legends-battle-royale.jpg</image:loc>
-      <image:title>Apex Legends Cheats review gameplay</image:title>
-      <image:caption>Gameplay screenshot on the reviews page.</image:caption>
+      <image:loc>https://rustcheats.io/media/rust-monument.jpg</image:loc>
+      <image:title>Rust Cheats review gameplay still</image:title>
+      <image:caption>Cheat gameplay still used on the reviews page.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://apexlegendscheats.org/faq</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://rustcheats.io/faq</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/faq" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/faq" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/media/apex-legends-ranked-squad.jpg</image:loc>
-      <image:title>Apex Legends ESP ranked gameplay</image:title>
-      <image:caption>Ranked match ESP reference artwork.</image:caption>
+      <image:loc>https://rustcheats.io/media/rust-raid-party.jpg</image:loc>
+      <image:title>Rust Cheats ESP gameplay still</image:title>
+      <image:caption>ESP overlay gameplay still from the Rust Cheats video.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://apexlegendscheats.org/apex-legends-cheats</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://rustcheats.io/rust-cheats</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/apex-legends-cheats" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/apex-legends-cheats" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rustcheats.io/rust-cheats" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rustcheats.io/rust-cheats" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/media/apex-legends-product-hero.webp</image:loc>
-      <image:title>Apex Legends Cheats gameplay preview</image:title>
+      <image:loc>https://rustcheats.io/media/rust-product-hero.webp</image:loc>
+      <image:title>Rust Cheats product gameplay preview</image:title>
       <image:caption>In-match ESP and radar on the product page.</image:caption>
     </image:image>
-  </url>
-  <url>
-    <loc>https://apexlegendscheats.org/apex-legends-cheats</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/apex-legends-cheats" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/apex-legends-cheats" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/media/apex-legends-product-cover.webp</image:loc>
-      <image:title>Apex Legends Cheats buy card gameplay</image:title>
-      <image:caption>Gameplay screenshot on the product card.</image:caption>
+      <image:loc>https://rustcheats.io/media/rust-product-cover.webp</image:loc>
+      <image:title>Rust Cheats product cover still</image:title>
+      <image:caption>Gameplay still used as the product cover image.</image:caption>
     </image:image>
-  </url>
-  <url>
-    <loc>https://apexlegendscheats.org/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/og/apex-legends-cheats.jpg</image:loc>
-      <image:title>Apex Legends Cheats social preview</image:title>
-      <image:caption>Open Graph image for apexlegendscheats.org.</image:caption>
+      <image:loc>https://rustcheats.io/media/rust-product-buy-card.webp</image:loc>
+      <image:title>Rust Cheats purple product box</image:title>
+      <image:caption>Purple-themed RUST CHEATS product box on the buy card.</image:caption>
     </image:image>
-  </url>
-  <url>
-    <loc>https://apexlegendscheats.org/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apexlegendscheats.org/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://apexlegendscheats.org/" />
     <image:image>
-      <image:loc>https://apexlegendscheats.org/media/apex-hero-poster.jpg</image:loc>
-      <image:title>Apex Legends Cheats hero video poster</image:title>
-      <image:caption>Poster frame for the homepage hero gameplay clip.</image:caption>
+      <image:loc>https://rustcheats.io/media/rust-product-preview-poster.jpg</image:loc>
+      <image:title>Rust Cheats video poster</image:title>
+      <image:caption>Poster frame from the Rust Cheats gameplay preview video.</image:caption>
     </image:image>
   </url>
 </urlset>

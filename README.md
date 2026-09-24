@@ -1,6 +1,6 @@
-# Apex Legends Cheats (apexlegendscheats.org)
+# Rust Cheats (rustcheats.io)
 
-Static Astro site for Apex Legends cheats — Cloudflare Pages ready.
+Static Astro site for Rust cheats — Cloudflare Pages ready.
 
 ## Stack
 
@@ -53,4 +53,4 @@ Local production deploy:
 npm run deploy
 ```
 
-`wrangler.toml` serves static files from `./dist` and custom domains `apexlegendscheats.org` / `www`.
+`wrangler.toml` serves static files from `./dist` and custom domains `rustcheats.io` / `www`.

@@ -3,70 +3,56 @@ export type SupportFaq = {
   a: string
 }
 
-export type SupportTopic = {
-  heading: string
-  body: string[]
+export type SupportStep = {
+  title: string
+  body: string
 }
 
 export const SUPPORT_INTRO =
-  'Support for Apex Legends Cheats buyers on apexlegendscheats.org — loader setup, Undetected status, menu config and delivery help after you purchase.'
+  'Support for Rust Cheats buyers on rustcheats.io — loader setup, Undetected status, menu config and delivery help after you purchase.'
 
-export const SUPPORT_TOPICS: SupportTopic[] = [
+export const SUPPORT_LEAD =
+  'Setup forums live in the [forums](/forums). Start with [Complete Setup](/forums/complete-setup) before opening a ticket.'
+
+/** Numbered “How we help” steps — support layout. */
+export const SUPPORT_STEPS: SupportStep[] = [
   {
-    heading: 'Before you open a support request',
-    body: [
-      'Confirm you bought Apex Legends Cheats from apexlegendscheats.org. We only support this product — not random downloads from elsewhere.',
-      'Check live status on the product page. If it says Updating, do not load. Wait for Undetected.',
-      'Have your order email and license length ready. That speeds up help after EAC patches.',
-    ],
+    title: 'Status before you load',
+    body: 'Confirm Undetected on the [product page](/rust-cheats) after every Rust / EAC patch. If status is Updating, wait — do not force an outdated build.',
   },
   {
-    heading: 'Setup and load order',
-    body: [
-      'Follow the Complete Setup forum thread for the current load order, antivirus exclusions, menu configuration and first clean launch.',
-      'If the product is Updating, wait. If an Undetected build still fails after one clean retry, open a support request with your order ID.',
-    ],
+    title: 'Loader and menu issues',
+    body: 'Follow [Complete Setup](/forums/complete-setup) for the current load order and antivirus exclusions. If an Undetected build still fails after one clean retry, open a request with your order ID.',
   },
   {
-    heading: 'Status windows and refunds',
-    body: [
-      'Do not load while status is Updating — that is the biggest avoidable risk after an EAC patch.',
-      'Delivery failures and extended Updating windows are covered on the Refunds page. Include your order ID when you write in.',
-    ],
+    title: 'Delivery and refunds',
+    body: 'Delivery failures and extended Updating windows are covered on the [Refunds](/refunds) page. Include your order ID when you write in.',
   },
   {
-    heading: 'What we support',
-    body: [
-      'Supported: current Apex Legends Windows builds — ESP, radar, soft aim, menu, setup and status questions.',
-      'Not supported: other games, cracked loaders or third-party mirrors.',
-      'Policy pages: Privacy, Terms and Refunds are linked in the footer.',
-    ],
+    title: 'What we can and cannot help with',
+    body: 'Supported: Rust on Windows PC, loader and menu help for paid licenses. Not supported: other games, cracked loaders or third-party mirrors.',
   },
 ]
 
 export const SUPPORT_FAQS: SupportFaq[] = [
   {
-    q: 'How do I contact Apex Legends Cheats support?',
-    a: 'Open your order on apexlegendscheats.org and use the checkout support channel tied to your purchase. Include a status screenshot (Undetected / Updating) and whether you need load, menu or delivery help.',
+    q: 'How do I contact Rust Cheats support?',
+    a: 'Open your order on rustcheats.io and use the checkout support channel tied to your purchase. Include a status screenshot (Undetected / Updating) and whether you need load, menu or delivery help.',
   },
   {
-    q: 'How do I load Apex Legends Cheats after a patch?',
-    a: 'Follow the Complete Setup forum thread for the current load order. If status is Updating, wait; if an Undetected build fails, include your order ID in a support request.',
+    q: 'The loader will not open — what first?',
+    a: 'Do not spam launch. Restart Rust, confirm [antivirus exclusions](/forums/disable-antivirus), re-check Undetected status, then try one clean load from [Complete Setup](/forums/complete-setup). If it still fails, contact support with your order ID.',
   },
   {
-    q: 'Loader failed — what should I do?',
-    a: 'Do not spam launch. Restart the game, confirm antivirus exclusions, re-check status, then try one clean load. If it still fails, contact support with your order ID.',
+    q: 'Menu opened once then never again?',
+    a: 'Re-check hotkeys in the [Hotkeys](/forums/hotkeys) guide, confirm the build is still Undetected, and avoid remapping mid-fight. If the menu stays dead after a clean reload, write in with your order ID and build name.',
   },
   {
-    q: 'Do you help with setup and config?',
-    a: 'Yes. Use the Complete Setup forum thread first, then contact support with your order ID if a current Undetected build still fails.',
+    q: 'Do you support multiplayer Rust servers?',
+    a: 'Rust Cheats targets official Facepunch Rust on Windows / Steam. We do not support cracked clients, private forks or third-party mirrors.',
   },
   {
-    q: 'Is aimbot required?',
-    a: 'No. Apex Legends Cheats lead with ESP and radar. Soft aim is optional. Support focuses on awareness features and safe load steps.',
-  },
-  {
-    q: 'Where is the Apex Legends Cheats download?',
-    a: 'Delivery is digital after checkout on apexlegendscheats.org. Use only that loader link. Third-party mirrors are unsupported and unsafe.',
+    q: 'Where is my delivery?',
+    a: 'Delivery is digital after checkout on rustcheats.io. Use only the official loader link from your order. Third-party mirrors are unsupported and unsafe — see [Refunds](/refunds) if delivery failed.',
   },
 ]

@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind'
 import { sitemapBrowserViewPlugin } from './scripts/sitemap-browser-view.mjs'
 
 export default defineConfig({
-  site: 'https://apexlegendscheats.org',
+  site: 'https://rustcheats.io',
   output: 'static',
   trailingSlash: 'never',
   compressHTML: true,
@@ -19,13 +19,13 @@ export default defineConfig({
     }),
   ],
   server: {
-    host: '127.0.0.1',
+    host: true,
     port: 5174,
   },
   vite: {
     plugins: [sitemapBrowserViewPlugin()],
     server: {
-      host: '127.0.0.1',
+      host: true,
       port: 5174,
       strictPort: true,
     },

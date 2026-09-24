@@ -1,4 +1,4 @@
-﻿---
+---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { FaqPage } from '../views/FaqPage'
 import { SEO, SITE_URL } from '../data/site'
@@ -18,7 +18,7 @@ const jsonLdExtra = [
 ---
 
 <BaseLayout seo={SEO.faq} jsonLdExtra={jsonLdExtra}>
-  <FaqPage client:visible />
+  <FaqPage client:idle />
 </BaseLayout>
 
 

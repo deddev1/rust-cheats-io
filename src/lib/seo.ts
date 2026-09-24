@@ -10,11 +10,10 @@ import {
   absoluteUrl,
   type PageSeo,
 } from '../data/site'
-import { getReviewsAggregate, REVIEWS } from '../data/reviews'
 import type { GameStatus } from '../data/games'
 import { PAGE_MEDIA } from '../data/media'
 
-export const PRODUCT_ID = `${SITE_URL}/#product`
+export const PRODUCT_ID = `${SITE_URL}/rust-cheats#product`
 
 function absoluteAsset(src: string) {
   return src.startsWith('http') ? src : `${SITE_URL}${src.startsWith('/') ? src : `/${src}`}`
@@ -28,10 +27,10 @@ export function siteIdentityGraph() {
       '@id': `${SITE_URL}/#organization`,
       name: SITE_NAME,
       alternateName: [
-        'apex legends cheats',
-        'apex legends hacks',
-        'apex legends cheats for pc',
-        'apexlegendscheats',
+        'rust cheats',
+        'rust hacks',
+        'rust cheats for pc',
+        'rustcheats',
         SITE_URL.replace('https://', ''),
       ],
       url: SITE_URL,
@@ -55,9 +54,9 @@ export function siteIdentityGraph() {
       inLanguage: 'en',
       about: {
         '@type': 'Thing',
-        name: 'Apex Legends Cheats',
+        name: 'Rust Cheats',
         description:
-          'Hacks for Apex Legends only — ESP, soft aim, radar and live EAC status.',
+          'Rust Cheats only — ESP, soft aim Aimbot, wallhack and live EAC status for Rust on Steam.',
       },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
@@ -77,7 +76,7 @@ export function webPageNode(seo: PageSeo) {
     inLanguage: 'en',
   } as Record<string, unknown>
   const hasVisibleImage =
-    ['/', '/apex-legends-cheats', '/forums', '/reviews', '/faq', '/support'].includes(seo.path) ||
+    ['/', '/rust-cheats', '/forums', '/reviews', '/faq', '/support', '/status'].includes(seo.path) ||
     seo.path.startsWith('/forums/')
   if (hasVisibleImage) {
     page.primaryImageOfPage = {
@@ -88,79 +87,63 @@ export function webPageNode(seo: PageSeo) {
       caption: seo.title,
     }
   }
+  // Point brand/product pages at the canonical Product entity (Offer only on /rust-cheats)
+  if (seo.path === '/' || seo.path === '/rust-cheats') {
+    page.mainEntity = { '@id': PRODUCT_ID }
+  }
   return page
 }
 
+/** Shared Product entity — lives on /rust-cheats (no Offer here). */
 export function productCoreJsonLd() {
   return {
     '@type': 'Product',
     '@id': PRODUCT_ID,
     name: SITE_NAME,
     description: SITE_PURPOSE,
-    url: `${SITE_URL}/`,
-    image: absoluteAsset(PAGE_MEDIA.home.image),
+    url: `${SITE_URL}/rust-cheats`,
+    image: absoluteAsset(PAGE_MEDIA.product.image),
     brand: { '@type': 'Brand', name: SITE_NAME },
     manufacturer: { '@id': `${SITE_URL}/#organization` },
-    category: 'Apex Legends software',
+    category: 'Rust software',
   }
 }
 
+/**
+ * Product page only — includes Offer.
+ * Offer.availability mirrors checkout (license is for sale), not EAC load status.
+ * Loader status stays on additionalProperty so schema does not claim OutOfStock while Buy works.
+ */
 export function productDetailJsonLd(status: GameStatus) {
-  const availability =
-    status === 'Undetected' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'
   return {
     ...productCoreJsonLd(),
-    image: absoluteAsset(PAGE_MEDIA.product.image),
     about: {
       '@type': 'VideoGame',
-      name: 'Apex Legends',
-      alternateName: 'Apex',
+      name: 'Rust',
+      alternateName: 'Rust',
     },
     additionalProperty: [
       {
         '@type': 'PropertyValue',
         name: 'Supported branch',
-        value: 'Apex Legends',
+        value: 'Rust',
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Loader status',
+        value: status,
       },
     ],
     offers: {
       '@type': 'Offer',
-      url: `${SITE_URL}/apex-legends-cheats`,
-      availability,
+      url: `${SITE_URL}/rust-cheats`,
+      availability: 'https://schema.org/InStock',
       price: PRODUCT_PRICE_USD,
       priceCurrency: 'USD',
       priceValidUntil: '2027-12-31',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@id': `${SITE_URL}/#organization` },
     },
-  }
-}
-
-export function productReviewsJsonLd() {
-  const aggregate = getReviewsAggregate()
-  return {
-    ...productCoreJsonLd(),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: aggregate.ratingValue,
-      reviewCount: aggregate.reviewCount,
-      bestRating: aggregate.bestRating,
-      worstRating: aggregate.worstRating,
-    },
-    review: REVIEWS.map((review) => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: review.author },
-      datePublished: review.datePublished,
-      reviewBody: review.body,
-      name: `${review.author} verified buyer review`,
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: String(review.rating),
-        bestRating: '5',
-        worstRating: '1',
-      },
-      itemReviewed: { '@id': PRODUCT_ID },
-    })),
   }
 }
 
@@ -187,7 +170,7 @@ export function faqPageJsonLd(items: FaqItem[], pageUrl?: string) {
       name: item.q,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.a,
+        text: item.a.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1'),
       },
     })),
   }

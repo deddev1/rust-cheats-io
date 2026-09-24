@@ -18,12 +18,12 @@ export const POLICY_PAGES: PolicyPageContent[] = [
   {
     slug: 'privacy',
     path: '/privacy',
-    title: 'Privacy Policy | Apex Legends Cheats',
+    title: 'Privacy Policy | Rust Cheats for PC',
     description:
-      'How apexlegendscheats.org handles order details, delivery email, support messages and basic site analytics for Apex Legends Cheats.',
+      'How rustcheats.io handles order details, delivery email, support messages and basic analytics when you browse or buy Rust Cheats on Steam.',
     h1: 'Privacy Policy',
     intro:
-      'This page explains what we collect when you browse apexlegendscheats.org, buy a Apex Legends Cheats license, or contact support — and what we do not collect.',
+      'This page explains what we collect when you browse rustcheats.io, buy a Rust Cheats license, or contact support — and what we do not collect.',
     sections: [
       {
         heading: 'What we collect',
@@ -45,8 +45,8 @@ export const POLICY_PAGES: PolicyPageContent[] = [
         heading: 'Cookies and third parties',
         body: [
           'Essential cookies may be set by checkout or CDN providers so payment and delivery work.',
-          'Embedded media (for example YouTube on the homepage) is governed by that provider’s privacy terms when you play it.',
-          'Official Apex Legends, EA, and Steam links are external. Their privacy policies apply once you leave apexlegendscheats.org.',
+          'Homepage and product media are first-party videos hosted on rustcheats.io. Checkout or CDN cookies may still apply during payment.',
+          'Official Rust, Facepunch, and Steam links are external. Their privacy policies apply once you leave rustcheats.io.',
         ],
       },
       {
@@ -66,24 +66,24 @@ export const POLICY_PAGES: PolicyPageContent[] = [
   {
     slug: 'terms',
     path: '/terms',
-    title: 'Terms of Use | Apex Legends Cheats',
+    title: 'Terms of Use | Rust Cheats for PC',
     description:
-      'License rules, age limits, anti-cheat risk, and liability limits for Apex Legends Cheats on apexlegendscheats.org.',
+      'License rules, age limits, Easy Anti-Cheat risk and liability limits for buying and running Rust Cheats on rustcheats.io.',
     h1: 'Terms of Use',
     intro:
-      'Buying or running Apex Legends Cheats means you accept these terms. A license covers personal use of ESP, radar, and soft-aim tools for Apex Legends on Windows PC — nothing beyond that.',
+      'Buying or running Rust Cheats means you accept these terms. A license covers personal use of ESP, wallhack, and soft-aim Aimbot tools for Rust on Windows PC — nothing beyond that.',
     sections: [
       {
         heading: 'Acceptance and what a license covers',
         body: [
-          'A key unlocks the current Apex Legends Cheats build for the duration you purchased (day, week, or month plans where offered).',
+          'A key unlocks the current Rust Cheats build for the duration you purchased (day, week, or month plans where offered).',
           'Handing the package to someone else, reselling it, sharing accounts, or reverse-engineering the loader breaks these terms and can end your access without a refund.',
         ],
       },
       {
         heading: 'Risk and anti-cheat disclaimer',
         body: [
-          'Apex Legends uses Easy Anti-Cheat. Using third-party software can violate the game’s terms and lead to account penalties.',
+          'Rust uses Easy Anti-Cheat. Using third-party software can violate the game’s terms and lead to account penalties.',
           'We push rebuilds after EAC and game updates when needed, but nothing here guarantees a build stays undetected forever or that an account stays safe.',
           'All risk sits with you. We accept no liability for bans, lost progress, or other damage tied to using the product. Check live status before you load.',
         ],
@@ -113,12 +113,12 @@ export const POLICY_PAGES: PolicyPageContent[] = [
   {
     slug: 'refunds',
     path: '/refunds',
-    title: 'Refund Policy | Apex Legends Cheats',
+    title: 'Refund Policy | Rust Cheats for PC',
     description:
-      'When Apex Legends Cheats refunds apply for digital licenses, delivery failures, and Updating status windows on apexlegendscheats.org.',
+      'When Rust Cheats refunds apply for digital licenses, failed delivery and extended Updating status windows after purchase on rustcheats.io.',
     h1: 'Refund Policy',
     intro:
-      'Apex Legends Cheats licenses are digital goods. This page covers when we can refund, when we cannot, and how to open a request with your order ID.',
+      'Rust Cheats licenses are digital goods. This page covers when we can refund, when we cannot, and how to open a request with your order ID.',
     sections: [
       {
         heading: 'When refunds are available',

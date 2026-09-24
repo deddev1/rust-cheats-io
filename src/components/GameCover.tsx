@@ -1,6 +1,9 @@
 import { useMemo, useState } from 'react'
 import { getGameImage, getImageAlt, getImageTitle, getProductHeroImage } from '../data/images'
-import { APEX_CARD_LOOP_MP4, APEX_CARD_LOOP_WEBM } from '../data/media'
+import {
+  RUST_CARD_LOOP_MP4,
+  RUST_PRODUCT_PREVIEW_POSTER,
+} from '../data/media'
 import { getResponsiveSpec } from '../data/responsive-images'
 import { ResponsiveImage } from './ResponsiveImage'
 
@@ -57,7 +60,7 @@ export function GameCover({
         : 'aspect-[16/10]'
 
   const eager = priority || variant === 'product'
-  const cardLoop = slug === 'apex-legends' && variant === 'catalog'
+  const cardLoop = slug === 'rust' && variant === 'catalog'
   const responsive = src ? getResponsiveSpec(src) : undefined
   const coverSizes =
     aspect === 'hero' || variant === 'product'
@@ -93,7 +96,7 @@ export function GameCover({
       {cardLoop && !failed && src ? (
         <video
           className={`game-cover-img absolute inset-0 z-[1] h-full w-full object-cover object-center${variant === 'product' ? ' game-cover-img--color' : ''}`}
-          poster={src}
+          poster={RUST_PRODUCT_PREVIEW_POSTER}
           muted
           autoPlay
           loop
@@ -102,8 +105,7 @@ export function GameCover({
           aria-hidden
           tabIndex={-1}
         >
-          <source src={APEX_CARD_LOOP_MP4} type="video/mp4" />
-          <source src={APEX_CARD_LOOP_WEBM} type="video/webm" />
+          <source src={RUST_CARD_LOOP_MP4} type="video/mp4" />
         </video>
       ) : null}
       {failed || !src ? (

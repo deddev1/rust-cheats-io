@@ -25,7 +25,8 @@ Allow: /sitemap-images.xml
 Allow: /sitemap.xml
 Allow: /robots.txt
 
-Sitemap: https://apexlegendscheats.org/sitemap-pages.xml
-Sitemap: https://apexlegendscheats.org/sitemap-products.xml
-Sitemap: https://apexlegendscheats.org/sitemap-forums.xml
-Sitemap: https://apexlegendscheats.org/sitemap-images.xml
+Sitemap: https://rustcheats.io/sitemap.xml
+Sitemap: https://rustcheats.io/sitemap-pages.xml
+Sitemap: https://rustcheats.io/sitemap-products.xml
+Sitemap: https://rustcheats.io/sitemap-forums.xml
+Sitemap: https://rustcheats.io/sitemap-images.xml

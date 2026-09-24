@@ -1,6 +1,6 @@
 # Cloudflare Workers + static assets — required so CI `npx wrangler deploy` succeeds.
 # (Dashboard is locked to that command; `wrangler pages deploy` is not used.)
-name = "apexlegendscheats-org"
+name = "rustcheats-io"
 main = "workers/site.js"
 compatibility_date = "2026-09-12"
 
@@ -9,13 +9,13 @@ compatibility_date = "2026-09-12"
 [build]
 command = "npm run build"
 
-# Recreate DNS/SSL for apex + www (fixes NXDOMAIN / Google HTTP 522).
+# Recreate DNS/SSL for rustcheats.io + www (fixes NXDOMAIN / Google HTTP 522).
 [[routes]]
-pattern = "apexlegendscheats.org"
+pattern = "rustcheats.io"
 custom_domain = true
 
 [[routes]]
-pattern = "www.apexlegendscheats.org"
+pattern = "www.rustcheats.io"
 custom_domain = true
 
 [assets]

@@ -42,10 +42,6 @@ export function SeoMedia({
             className="aspect-video h-full w-full bg-black object-cover"
           >
             <source src={media.video} type="video/mp4" />
-            <source
-              src={media.video.replace(/\.mp4$/, '.webm')}
-              type="video/webm"
-            />
           </video>
         ) : null}
       </div>

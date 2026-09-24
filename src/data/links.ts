@@ -1,21 +1,21 @@
 import { blogPath } from './blog-paths'
 
-/** Official Apex Legends destinations for factual game context. */
-export const OFFICIAL_APEX_LINKS = [
+/** Official Rust destinations for factual game context. */
+export const OFFICIAL_RUST_LINKS = [
   {
-    label: 'EA.com',
-    href: 'https://www.ea.com/games/apex-legends',
-    description: 'Official Apex Legends website',
+    label: 'Facepunch',
+    href: 'https://rust.facepunch.com/',
+    description: 'Official Rust website',
   },
   {
     label: 'Steam',
-    href: 'https://store.steampowered.com/app/1172470/Apex_Legends/',
+    href: 'https://store.steampowered.com/app/252490/Rust/',
     description: 'Official Windows PC store page',
   },
   {
-    label: 'EA publisher',
-    href: 'https://www.ea.com/games/apex-legends/apex-legends',
-    description: 'Publisher page with official game details',
+    label: 'Rust Wiki',
+    href: 'https://wiki.facepunch.com/rust/',
+    description: 'Official game documentation',
   },
 ] as const
 
@@ -24,8 +24,8 @@ export const SITE_PAGE_LINKS = [
   { label: 'Home', to: '/', description: 'Live status, price and checkout' },
   {
     label: 'Product',
-    to: '/apex-legends-cheats',
-    description: 'ESP, radar, aim and compatibility details',
+    to: '/rust-cheats',
+    description: 'Rust Cheats ESP, Aimbot, wallhack and compatibility details',
   },
   {
     label: 'Forums',
@@ -74,12 +74,12 @@ export const SITE_GUIDE_LINKS = [
 ] as const
 
 /**
- * External checkout go-link → Apex Legends product.
+ * External checkout go-link → Rust product.
  * Always pair with rel=nofollow so crawlers do not index the redirect.
  */
 const CHECKOUT_HOST = ['za', 'deyo', '.com'].join('')
 const CHECKOUT_REF = ['Q', 'R', 'H'].join('')
-const CHECKOUT_PRODUCT = '/products/apex-legends'
+const CHECKOUT_PRODUCT = '/products/rust'
 
 export const CHECKOUT_URL = `https://${CHECKOUT_HOST}/go/${CHECKOUT_REF}?to=${encodeURIComponent(CHECKOUT_PRODUCT)}`
 

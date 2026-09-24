@@ -24,7 +24,7 @@ const absoluteMedia = (path: string) => `${SITE_URL}${path}`
 const seo: PageSeo = {
   title: post.metaTitle,
   description: post.metaDescription,
-  keywords: `apex legends cheats, apex legends hacks, ${post.searchTerms}`,
+  keywords: `rust cheats, rust hacks, ${post.searchTerms}`,
   path: blogPath(post.slug),
   ogType: 'article',
   image: media.image,
@@ -37,7 +37,7 @@ const jsonLdExtra = [
     headline: post.title,
     description: post.metaDescription,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.dateModified || post.date,
     author: { '@id': `${SITE_URL}/#organization` },
     publisher: { '@id': `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}${blogPath(post.slug)}`,

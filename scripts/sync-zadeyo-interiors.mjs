@@ -29,7 +29,7 @@ const ZADEYO_TO_CATALOG = {
   'sand-raiders-of-sophie': 'sand',
   'star-wars-battlefront-2': 'swbf',
   'star-wars-zero-company-cheats': 'star-wars-zero-company',
-  'the-apex-legends-novaxware': 'apex-legends',
+  'the-rust-novaxware': 'rust',
   thefinals: 'the-finals',
   'wuthering-waves': 'wunthering',
 }

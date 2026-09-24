@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-
-const HERO_VIDEO_BASE = '/videos/apex-hero'
 import {
   HERO_POSTER_ALT,
   HERO_POSTER_HEIGHT,
@@ -9,166 +7,90 @@ import {
   HERO_POSTER_WEBP_SRCSET,
   HERO_POSTER_WIDTH,
 } from '../data/hero-poster'
-const START_AT = 0
-/** Hero WebM is larger than MP4 in our encode — prefer MP4 when both are present. */
-const HERO_WEBM_FIRST = false
+
+/** Cached, compressed hero loop — poster remains LCP. */
+const HERO_MP4 = '/videos/rust-hero.mp4?v=hq1920'
 
 type VideoBgProps = {
-  /** Static full-bleed hero image — skips video when set (homepage only). */
+  /** Static full-bleed hero image — skips video when set. */
   image?: string
   imageAlt?: string
   /** Stronger dark + violet overlay for headline contrast (homepage). */
   readable?: boolean
 }
 
-function prefersReducedMotion() {
-  return (
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  )
+function shouldSkipVideo() {
+  if (typeof window === 'undefined') return true
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true
+  // Mobile / touch: keep poster only — biggest Lighthouse + cellular win
+  if (window.matchMedia('(max-width: 1023px), (hover: none)').matches) return true
+  const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
+    .connection
+  if (conn?.saveData) return true
+  if (conn?.effectiveType === 'slow-2g' || conn?.effectiveType === '2g') return true
+  return false
 }
 
 export function VideoBg({ image, imageAlt = '', readable = false }: VideoBgProps) {
-  const wrapRef = useRef<HTMLDivElement>(null)
-  const ref = useRef<HTMLVideoElement>(null)
-  const [visible, setVisible] = useState(Boolean(image))
-  const [failed, setFailed] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [loadVideo, setLoadVideo] = useState(false)
 
+  // Defer network until after first paint / idle so poster wins LCP
   useEffect(() => {
-    if (image) return
+    if (image || shouldSkipVideo()) return
 
-    if (prefersReducedMotion()) {
-      setVisible(true)
-      return
+    let idleId = 0
+    let timeoutId = 0
+
+    const arm = () => setLoadVideo(true)
+
+    const afterLoad = () => {
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(arm, { timeout: 1800 })
+      } else {
+        timeoutId = window.setTimeout(arm, 900)
+      }
     }
 
-    let cancelled = false
-    const arm = () => {
-      if (!cancelled) setLoadVideo(true)
+    if (document.readyState === 'complete') afterLoad()
+    else {
+      window.addEventListener('load', afterLoad, { once: true })
+      // Fallback if load already fired oddly
+      timeoutId = window.setTimeout(afterLoad, 2500)
     }
-
-    const idleId =
-      typeof window.requestIdleCallback === 'function'
-        ? window.requestIdleCallback(arm, { timeout: 2800 })
-        : undefined
-    const fallbackTimer = idleId === undefined ? window.setTimeout(arm, 400) : undefined
-
-    const root = wrapRef.current
-    const observer =
-      typeof IntersectionObserver !== 'undefined' && root
-        ? new IntersectionObserver(
-            (entries) => {
-              if (entries.some((e) => e.isIntersecting)) {
-                arm()
-                observer.disconnect()
-              }
-            },
-            { rootMargin: '80px' },
-          )
-        : null
-    observer?.observe(root!)
 
     return () => {
-      cancelled = true
-      if (idleId !== undefined && typeof window.cancelIdleCallback === 'function') {
-        window.cancelIdleCallback(idleId)
-      }
-      if (fallbackTimer !== undefined) window.clearTimeout(fallbackTimer)
-      observer?.disconnect()
+      window.removeEventListener('load', afterLoad)
+      if (idleId && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId)
+      if (timeoutId) window.clearTimeout(timeoutId)
     }
   }, [image])
 
   useEffect(() => {
-    if (image || !loadVideo || prefersReducedMotion()) return
-
-    const video = ref.current
+    if (!loadVideo || image) return
+    const video = videoRef.current
     if (!video) return
-
-    let cancelled = false
-    let showTimer: ReturnType<typeof setTimeout> | undefined
 
     video.muted = true
     video.defaultMuted = true
     video.playsInline = true
     video.loop = true
-    video.controls = false
 
-    const show = () => {
-      if (!cancelled) setVisible(true)
-    }
-
-    const jumpStart = () => {
-      if (!video.duration || video.duration <= START_AT) return
-      try {
-        if (video.currentTime < START_AT - 0.2) {
-          video.currentTime = START_AT
-        }
-      } catch {
-        /* seek may fail until buffered — ignore */
-      }
-    }
-
-    const play = () => {
-      jumpStart()
-      void video.play().then(show).catch(() => {
-        if (video.readyState >= 2) show()
-      })
-    }
-
-    const onLoadedData = () => {
-      jumpStart()
-      play()
-    }
-
-    const onCanPlay = () => play()
-    const onPlaying = () => show()
-    const onSeeked = () => {
-      void video.play().then(show).catch(() => show())
-    }
-
-    const onEnded = () => {
-      try {
-        video.currentTime = video.duration > START_AT ? START_AT : 0
-      } catch {
-        /* ignore */
-      }
+    const kick = () => {
       void video.play().catch(() => {})
     }
 
-    const onError = () => {
-      setFailed(true)
-      setVisible(true)
-    }
-
-    video.addEventListener('loadeddata', onLoadedData)
-    video.addEventListener('canplay', onCanPlay)
-    video.addEventListener('playing', onPlaying)
-    video.addEventListener('seeked', onSeeked)
-    video.addEventListener('ended', onEnded)
-    video.addEventListener('error', onError)
-
-    showTimer = setTimeout(show, 2200)
-    video.load()
+    video.addEventListener('canplay', kick)
+    kick()
 
     return () => {
-      cancelled = true
-      if (showTimer) clearTimeout(showTimer)
-      video.removeEventListener('loadeddata', onLoadedData)
-      video.removeEventListener('canplay', onCanPlay)
-      video.removeEventListener('playing', onPlaying)
-      video.removeEventListener('seeked', onSeeked)
-      video.removeEventListener('ended', onEnded)
-      video.removeEventListener('error', onError)
+      video.removeEventListener('canplay', kick)
     }
-  }, [image, loadVideo])
-
-  const videoShowing = loadVideo && visible && !failed && !image
+  }, [loadVideo, image])
 
   return (
     <div
-      ref={wrapRef}
-      className={`hero-video-wrap absolute inset-0 z-0 overflow-hidden pointer-events-none select-none${readable ? ' hero-video--readable' : ''}`}
+      className={`hero-video-wrap absolute inset-0 z-0 overflow-hidden pointer-events-none select-none${readable ? ' hero-video--readable' : ''}${image ? ' hero-video--still' : ''}`}
     >
       <div className="absolute inset-0 z-0 bg-z-bg" aria-hidden />
       {image ? (
@@ -179,12 +101,11 @@ export function VideoBg({ image, imageAlt = '', readable = false }: VideoBgProps
           height={1080}
           decoding="async"
           fetchPriority="high"
-          className={`hero-video-bg absolute inset-0 z-[1] h-full w-full object-cover object-[78%_42%] sm:object-[72%_40%] transition-opacity duration-700 ${
-            visible ? 'opacity-100' : 'opacity-0'
-          }`}
+          className="hero-video-bg absolute inset-0 z-[1] h-full w-full object-cover object-center"
         />
       ) : (
         <>
+          {/* LCP still — always painted first; video swaps in later */}
           <picture>
             <source type="image/webp" srcSet={HERO_POSTER_WEBP_SRCSET} sizes={HERO_POSTER_SIZES} />
             <img
@@ -195,19 +116,17 @@ export function VideoBg({ image, imageAlt = '', readable = false }: VideoBgProps
               sizes={HERO_POSTER_SIZES}
               decoding="sync"
               fetchPriority="high"
-              className={`hero-video-bg absolute inset-0 z-[1] h-full w-full object-cover object-center transition-opacity duration-700 ${
-                videoShowing ? 'opacity-0' : 'opacity-100'
-              }`}
+              className="hero-video-bg absolute inset-0 z-[1] h-full w-full object-cover object-center"
             />
           </picture>
-          {loadVideo && !failed ? (
+          {loadVideo ? (
             <video
-              ref={ref}
-              className={`hero-video-bg absolute inset-0 z-[1] h-full w-full object-cover object-[center_center] transition-opacity duration-700 ${
-                videoShowing ? 'opacity-100' : 'opacity-0'
-              }`}
+              ref={videoRef}
+              className="hero-video-bg absolute inset-0 z-[1] h-full w-full object-cover object-center motion-reduce:hidden"
+              src={HERO_MP4}
               poster={HERO_POSTER_JPG}
               muted
+              autoPlay
               playsInline
               loop
               preload="none"
@@ -216,19 +135,7 @@ export function VideoBg({ image, imageAlt = '', readable = false }: VideoBgProps
               disableRemotePlayback
               aria-hidden
               tabIndex={-1}
-            >
-              {HERO_WEBM_FIRST ? (
-                <>
-                  <source src={`${HERO_VIDEO_BASE}.webm`} type="video/webm" />
-                  <source src={`${HERO_VIDEO_BASE}.mp4`} type="video/mp4" />
-                </>
-              ) : (
-                <>
-                  <source src={`${HERO_VIDEO_BASE}.mp4`} type="video/mp4" />
-                  <source src={`${HERO_VIDEO_BASE}.webm`} type="video/webm" />
-                </>
-              )}
-            </video>
+            />
           ) : null}
         </>
       )}

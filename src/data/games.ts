@@ -7,17 +7,24 @@ export type Game = {
   popular?: boolean
 }
 
-/** Site is Apex Legends Cheats only — no other titles in the catalog. */
+/** Site is Rust Cheats only — no other titles in the catalog. */
 export const GAMES: Game[] = [
-  { slug: 'apex-legends', name: 'Apex Legends', status: 'Updating', popular: true },
+  { slug: 'rust', name: 'Rust', status: 'Updating', popular: true },
 ]
 
 export function getGame(slug: string) {
   return GAMES.find((g) => g.slug === slug)
 }
 
+/** Short badge for hero / glass cards — always derived from `Game.status`. */
+export function statusShort(status: GameStatus): string {
+  if (status === 'Undetected') return 'UD'
+  if (status === 'Updating') return 'UPD'
+  return 'CAU'
+}
+
 export function guidePath(slug: string) {
-  return slug === 'apex-legends' ? '/apex-legends-cheats' : `/${slug}-cheats`
+  return slug === 'rust' ? '/rust-cheats' : `/${slug}-cheats`
 }
 
 export function parseGuideSlug(param: string) {
@@ -25,41 +32,45 @@ export function parseGuideSlug(param: string) {
 }
 
 /**
- * Feature list tuned to what ranks for Apex Legends Cheats
+ * Feature list tuned to what ranks for Rust Cheats
  * Feature bullets for the product page — ESP & awareness first.
  */
 export const GUIDE_FEATURES = [
   {
     name: 'Player ESP',
-    text: 'Highlight enemy and friendly players with distance, team and health information when supported by the current build.',
+    text: 'See players, sleepers and distance through terrain when the current Rust Cheats build supports it.',
   },
   {
-    name: 'Loot ESP',
-    text: 'Highlight weapons, armor, attachments, healing items and death boxes with configurable filters.',
+    name: 'Resource ESP',
+    text: 'Highlight nodes, crates, barrels, airdrops and stashes with configurable filters.',
   },
   {
-    name: '2D Radar',
-    text: 'Map-style awareness for nearby squads so you can read rotations and approaching third parties.',
+    name: 'Off-screen finder',
+    text: 'Awareness for nearby players and raid activity around your base outside your FOV.',
   },
   {
-    name: 'Aim assistance',
-    text: 'Configurable aim support with field-of-view and smoothing controls where the current release supports them.',
+    name: 'Soft aim Aimbot',
+    text: 'Configurable Aimbot assist with field-of-view and smoothing controls where supported.',
+  },
+  {
+    name: 'HWID Spoofer',
+    text: 'Optional hardware ID spoof on supported Windows builds — only when live status is Undetected and the current loader lists spoofer support.',
   },
   {
     name: 'Stream-proof mode',
-    text: 'Keep supported overlays out of common capture software when recording or streaming.',
+    text: 'Keep supported Rust Cheats overlays out of common capture software when recording or streaming.',
   },
   {
     name: 'Configurable hotkeys',
-    text: 'Toggle visual and aim features quickly without leaving a battle royale or Mixtape match.',
+    text: 'Toggle ESP, wallhack and combat features quickly during wipes and monument runs.',
   },
   {
-    name: 'Steam and EA app support',
-    text: 'Compatibility is tracked against current Windows builds distributed through Steam and the EA app.',
+    name: 'Steam support',
+    text: 'Compatibility is tracked against current Rust Windows builds on Steam (app 252490).',
   },
   {
     name: 'Patch status + support',
-    text: 'Updating or Undetected status is reviewed after Apex Legends client patches before access is recommended.',
+    text: 'Updating or Undetected status is reviewed after Rust and Easy Anti-Cheat updates.',
   },
 ] as const
 

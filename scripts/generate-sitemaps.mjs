@@ -10,17 +10,19 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const publicDir = join(root, 'public')
 const dataDir = join(root, 'src', 'data')
 const pagesDir = join(root, 'src', 'pages')
-const SITE = (process.env.SITE_URL || 'https://apexlegendscheats.org').replace(/\/$/, '')
+const SITE = (process.env.SITE_URL || 'https://rustcheats.io').replace(/\/$/, '')
 const TODAY = new Date().toLocaleDateString('en-CA')
 const HREFLANG = ['en', 'x-default']
 
-const SOLDIER = '/media/apex-legends-soldier-hero.jpg'
-const TACTICAL = '/media/apex-legends-battle-royale.jpg'
-const OBJECTIVE = '/media/apex-legends-ranked-squad.jpg'
-const PRODUCT_HERO = '/media/apex-legends-product-hero.webp'
-const PRODUCT_COVER = '/media/apex-legends-product-cover.webp'
-const OG_DEFAULT = '/og/apex-legends-cheats.jpg'
-const HERO_POSTER = '/media/apex-hero-poster.jpg'
+const SOLDIER = '/media/rust-soldier-hero.jpg'
+const TACTICAL = '/media/rust-monument.jpg'
+const OBJECTIVE = '/media/rust-raid-party.jpg'
+const PRODUCT_HERO = '/media/rust-product-hero.webp'
+const PRODUCT_COVER = '/media/rust-product-cover.webp'
+const BUY_CARD = '/media/rust-product-buy-card.webp'
+const PRODUCT_POSTER = '/media/rust-product-preview-poster.jpg'
+const OG_DEFAULT = '/og/rust-cheats.jpg'
+const HERO_POSTER = '/media/rust-hero-poster.jpg'
 
 export const CHILD_SITEMAPS = [
   'sitemap-pages.xml',
@@ -36,16 +38,18 @@ const ALL_SITE_IMAGES = [
   OBJECTIVE,
   PRODUCT_HERO,
   PRODUCT_COVER,
+  BUY_CARD,
+  PRODUCT_POSTER,
   OG_DEFAULT,
   HERO_POSTER,
 ]
 
 const FORUM_IMAGES = {
-  'features-list': OBJECTIVE,
-  hotkeys: SOLDIER,
+  'features-list': PRODUCT_POSTER,
+  hotkeys: HERO_POSTER,
   'complete-setup': OBJECTIVE,
   'disable-antivirus': TACTICAL,
-  'undetected-status': OBJECTIVE,
+  'undetected-status': SOLDIER,
 }
 
 /** Page URL where each image is primarily used (image sitemap requires a page loc). */
@@ -53,39 +57,49 @@ const IMAGE_PAGE_FOR = {
   [SOLDIER]: '/',
   [TACTICAL]: '/reviews',
   [OBJECTIVE]: '/faq',
-  [PRODUCT_HERO]: '/apex-legends-cheats',
-  [PRODUCT_COVER]: '/apex-legends-cheats',
+  [PRODUCT_HERO]: '/rust-cheats',
+  [PRODUCT_COVER]: '/rust-cheats',
+  [BUY_CARD]: '/rust-cheats',
+  [PRODUCT_POSTER]: '/rust-cheats',
   [OG_DEFAULT]: '/',
   [HERO_POSTER]: '/',
 }
 
 const IMAGE_META = {
   [SOLDIER]: {
-    title: 'Apex Legends Cheats gameplay screenshot',
-    caption: 'In-game ESP and radar preview for Apex Legends Cheats on PC.',
+    title: 'Rust Cheats gameplay screenshot',
+    caption: 'In-game ESP and radar preview from Rust Cheats gameplay video.',
   },
   [TACTICAL]: {
-    title: 'Apex Legends Cheats review gameplay',
-    caption: 'Gameplay screenshot on the reviews page.',
+    title: 'Rust Cheats review gameplay still',
+    caption: 'Cheat gameplay still used on the reviews page.',
   },
   [OBJECTIVE]: {
-    title: 'Apex Legends ESP ranked gameplay',
-    caption: 'Ranked match ESP reference artwork.',
+    title: 'Rust Cheats ESP gameplay still',
+    caption: 'ESP overlay gameplay still from the Rust Cheats video.',
   },
   [PRODUCT_HERO]: {
-    title: 'Apex Legends Cheats gameplay preview',
+    title: 'Rust Cheats product gameplay preview',
     caption: 'In-match ESP and radar on the product page.',
   },
   [PRODUCT_COVER]: {
-    title: 'Apex Legends Cheats buy card gameplay',
-    caption: 'Gameplay screenshot on the product card.',
+    title: 'Rust Cheats product cover still',
+    caption: 'Gameplay still used as the product cover image.',
+  },
+  [BUY_CARD]: {
+    title: 'Rust Cheats purple product box',
+    caption: 'Purple-themed RUST CHEATS product box on the buy card.',
+  },
+  [PRODUCT_POSTER]: {
+    title: 'Rust Cheats video poster',
+    caption: 'Poster frame from the Rust Cheats gameplay preview video.',
   },
   [OG_DEFAULT]: {
-    title: 'Apex Legends Cheats social preview',
-    caption: 'Open Graph image for apexlegendscheats.org.',
+    title: 'Rust Cheats social preview',
+    caption: 'Open Graph image for rustcheats.io.',
   },
   [HERO_POSTER]: {
-    title: 'Apex Legends Cheats hero video poster',
+    title: 'Rust Cheats hero video poster',
     caption: 'Poster frame for the homepage hero gameplay clip.',
   },
 }
@@ -197,7 +211,25 @@ function buildPagesSitemap() {
       path: '/support',
       priority: '0.75',
       changefreq: 'weekly',
-      images: [{ src: TACTICAL, ...IMAGE_META[TACTICAL] }],
+      images: [
+        {
+          src: PRODUCT_POSTER,
+          title: 'Rust Cheats support gameplay still',
+          caption: 'Gameplay still for Rust Cheats loader setup and delivery support.',
+        },
+      ],
+    }),
+    urlEntry({
+      path: '/status',
+      priority: '0.85',
+      changefreq: 'daily',
+      images: [
+        {
+          src: SOLDIER,
+          title: 'Rust Cheats live status',
+          caption: 'Status and changelog page for Undetected vs Updating after EAC patches.',
+        },
+      ],
     }),
     urlEntry({
       path: '/privacy',
@@ -244,7 +276,7 @@ function buildForumsSitemap(forums) {
       path: '/forums',
       priority: '0.85',
       changefreq: 'weekly',
-      images: [{ src: OBJECTIVE, title: 'Apex Legends Cheats guides', caption: 'Forum index artwork.' }],
+      images: [{ src: OBJECTIVE, title: 'Rust Cheats guides', caption: 'Forum index artwork.' }],
     }),
     ...forums.map((forum) =>
       urlEntry({
@@ -266,16 +298,21 @@ function buildForumsSitemap(forums) {
 }
 
 function buildImagesSitemap() {
-  const entries = ALL_SITE_IMAGES.map((src) => {
+  /** One <url> per page with all images nested — avoids duplicate locs for /rust-cheats. */
+  const byPath = new Map()
+  for (const src of ALL_SITE_IMAGES) {
     const path = IMAGE_PAGE_FOR[src]
-    const meta = IMAGE_META[src]
-    return urlEntry({
+    if (!byPath.has(path)) byPath.set(path, [])
+    byPath.get(path).push({ src, ...IMAGE_META[src] })
+  }
+  const entries = [...byPath.entries()].map(([path, images]) =>
+    urlEntry({
       path,
       priority: path === '/' ? '0.6' : '0.5',
       changefreq: 'monthly',
-      images: [{ src, ...meta }],
-    })
-  })
+      images,
+    }),
+  )
   return wrapUrlset(entries)
 }
 
@@ -423,6 +460,7 @@ function main() {
     'Allow: /sitemap.xml',
     'Allow: /robots.txt',
     '',
+    `Sitemap: ${siteUrl('/sitemap.xml')}`,
     `Sitemap: ${siteUrl('/sitemap-pages.xml')}`,
     `Sitemap: ${siteUrl('/sitemap-products.xml')}`,
     `Sitemap: ${siteUrl('/sitemap-forums.xml')}`,

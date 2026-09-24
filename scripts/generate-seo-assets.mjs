@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
+import { generateThemeHeroFromBox } from './lib/theme-hero-box.mjs'
 
 const require = createRequire(import.meta.url)
 const root = join(fileURLToPath(new URL('.', import.meta.url)), '..')
@@ -23,7 +24,7 @@ function escapeXml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 }
 
-function artwork(width, height, eyebrow, title, subtitle, footer = 'apexlegendscheats.org') {
+function artwork(width, height, eyebrow, title, subtitle, footer = 'rustcheats.io') {
   const titleSize = Math.round(width * 0.066)
   const subtitleSize = Math.round(width * 0.026)
   return Buffer.from(`
@@ -79,78 +80,80 @@ async function generatePlaceholderAssets() {
         1200,
         630,
         'WINDOWS PC · LIVE STATUS',
-        'Apex Legends Cheats',
+        'Rust Cheats',
         'Player ESP · Radar · Aim Assistance',
       ),
     )
       .jpeg({ quality: 90, chromaSubsampling: '4:4:4' })
-      .toFile(join(ogDir, 'apex-legends-cheats.jpg')),
+      .toFile(join(ogDir, 'rust-cheats.jpg')),
     sharp(
       artwork(
         1440,
         810,
         'PRODUCT DETAILS · WINDOWS PC',
-        'Apex Legends ESP & Radar',
+        'Rust ESP & Radar',
         'Features · Compatibility · Current Status',
       ),
     )
       .webp({ quality: 88 })
-      .toFile(join(mediaDir, 'apex-legends-product-hero.webp')),
+      .toFile(join(mediaDir, 'rust-product-hero.webp')),
     sharp(
       artwork(
         1000,
         1000,
-        'Apex Legends PRODUCT',
+        'Rust PRODUCT',
         'ESP · Radar · Aim',
         'Check compatibility before access',
       ),
     )
       .webp({ quality: 88 })
-      .toFile(join(mediaDir, 'apex-legends-product-cover.webp')),
+      .toFile(join(mediaDir, 'rust-product-cover.webp')),
     sharp(
       artwork(
         1200,
         675,
-        'BATTLE ROYALE · WINDOWS PC',
-        'Apex Legends Cheats',
-        'Player intelligence · Loot · Ranked rotations',
+        'SURVIVAL · WINDOWS PC',
+        'Rust Cheats',
+        'Player intelligence · Resources · Raids',
       ),
     )
       .jpeg({ quality: 90, chromaSubsampling: '4:4:4' })
-      .toFile(join(mediaDir, 'apex-legends-battle-royale.jpg')),
+      .toFile(join(mediaDir, 'rust-monument.jpg')),
     sharp(
       artwork(
         1200,
         675,
-        'RANKED · BATTLE ROYALE',
-        'Apex Legends ESP & Radar',
-        'Built for current Steam and EA app builds',
+        'ONLINE · WIPE',
+        'Rust ESP & Radar',
+        'Built for current Steam builds',
       ),
     )
       .jpeg({ quality: 90, chromaSubsampling: '4:4:4' })
-      .toFile(join(mediaDir, 'apex-legends-ranked-squad.jpg')),
+      .toFile(join(mediaDir, 'rust-raid-party.jpg')),
     sharp(
       artwork(
         1920,
         1080,
-        'RESPAWN · EA · WINDOWS PC',
-        'Apex Legends Cheats',
-        'Awareness for battle royale and ranked play',
+        'FACEPUNCH · STEAM · PC',
+        'Rust Cheats',
+        'Awareness for wipes, monuments and online raids',
       ),
     )
       .jpeg({ quality: 90, chromaSubsampling: '4:4:4' })
-      .toFile(join(mediaDir, 'apex-legends-soldier-hero.jpg')),
+      .toFile(join(mediaDir, 'rust-soldier-hero.jpg')),
   ])
 }
 
 async function generateCheatAssets() {
   await Promise.all([
-    fromCheat(1, 800, 800, join(mediaDir, 'apex-legends-product-cover.webp'), 'webp'),
-    fromCheat(2, 1280, 720, join(mediaDir, 'apex-legends-product-hero.webp'), 'webp'),
-    fromCheat(3, 960, 540, join(mediaDir, 'apex-legends-battle-royale.jpg'), 'jpeg'),
-    fromCheat(4, 960, 540, join(mediaDir, 'apex-legends-ranked-squad.jpg'), 'jpeg'),
-    fromCheat(5, 1280, 720, join(mediaDir, 'apex-legends-soldier-hero.jpg'), 'jpeg'),
-    fromCheat(6, 1200, 630, join(ogDir, 'apex-legends-cheats.jpg'), 'jpeg'),
+    fromCheat(1, 800, 800, join(mediaDir, 'rust-product-cover.webp'), 'webp'),
+    fromCheat(2, 1280, 720, join(mediaDir, 'rust-product-hero.webp'), 'webp'),
+    fromCheat(2, 1280, 720, join(mediaDir, 'rust-product-preview-poster.jpg'), 'jpeg'),
+    fromCheat(3, 1280, 720, join(mediaDir, 'rust-monument.jpg'), 'jpeg'),
+    fromCheat(4, 1280, 720, join(mediaDir, 'rust-raid-party.jpg'), 'jpeg'),
+    fromCheat(5, 1280, 720, join(mediaDir, 'rust-soldier-hero.jpg'), 'jpeg'),
+    fromCheat(6, 1200, 630, join(ogDir, 'rust-cheats.jpg'), 'jpeg'),
+    fromCheat(1, 1280, 720, join(mediaDir, 'rust-hero-poster.jpg'), 'jpeg'),
   ])
 }
 
@@ -234,9 +237,9 @@ function encodeHeroClip(ff, heroMp4, { start, duration, width, baseName, crfH264
 
 async function generateGameplayResponsive() {
   const stills = [
-    ['apex-legends-soldier-hero.jpg', 'apex-legends-soldier-hero'],
-    ['apex-legends-battle-royale.jpg', 'apex-legends-battle-royale'],
-    ['apex-legends-ranked-squad.jpg', 'apex-legends-ranked-squad'],
+    ['rust-soldier-hero.jpg', 'rust-soldier-hero'],
+    ['rust-monument.jpg', 'rust-monument'],
+    ['rust-raid-party.jpg', 'rust-raid-party'],
   ]
   for (const [file, base] of stills) {
     const input = join(mediaDir, file)
@@ -251,21 +254,21 @@ async function generateGameplayResponsive() {
     }
   }
 
-  const productHero = join(mediaDir, 'apex-legends-product-hero.webp')
+  const productHero = join(mediaDir, 'rust-product-hero.webp')
   if (existsSync(productHero)) {
     for (const w of [480, 800]) {
       const h = Math.round((w * 9) / 16)
       await sharp(productHero)
         .resize(w, h, { fit: 'cover', position: 'centre' })
         .webp({ quality: 74, effort: 4 })
-        .toFile(join(mediaDir, `apex-legends-product-hero-${w}w.webp`))
+        .toFile(join(mediaDir, `rust-product-hero-${w}w.webp`))
     }
   }
 }
 
 async function generateHeroPosters(ff) {
-  const heroMp4 = join(videoDir, 'apex-hero.mp4')
-  const posterJpg = join(mediaDir, 'apex-hero-poster.jpg')
+  const heroMp4 = join(videoDir, 'rust-hero.mp4')
+  const posterJpg = join(mediaDir, 'rust-hero-poster.jpg')
   const framePath = join(mediaDir, '_hero-poster-frame.jpg')
   let input = null
 
@@ -277,8 +280,13 @@ async function generateHeroPosters(ff) {
     )
     if (frame.status === 0 && existsSync(framePath)) input = framePath
   }
-  if (!input && existsSync(posterJpg)) input = posterJpg
+  if (!input && existsSync(posterJpg)) return
+  if (!input) {
+    const soldierHero = join(mediaDir, 'rust-soldier-hero.jpg')
+    if (existsSync(soldierHero)) input = soldierHero
+  }
   if (!input) return
+  if (input === posterJpg) return
 
   await sharp(input)
     .rotate()
@@ -292,21 +300,21 @@ async function generateHeroPosters(ff) {
       .rotate()
       .resize(w, h, { fit: 'cover', position: 'centre' })
       .webp({ quality: 72, effort: 4 })
-      .toFile(join(mediaDir, `apex-hero-poster-${w}w.webp`))
+      .toFile(join(mediaDir, `rust-hero-poster-${w}w.webp`))
   }
 
   if (input === framePath && existsSync(framePath)) unlinkSync(framePath)
 }
 
 function encodeHeroClips(ff) {
-  const heroMp4 = join(videoDir, 'apex-hero.mp4')
+  const heroMp4 = join(videoDir, 'rust-hero.mp4')
   if (!existsSync(heroMp4)) return
 
   encodeHeroClip(ff, heroMp4, {
     start: 1,
     duration: 6,
     width: 640,
-    baseName: 'apex-card-loop',
+    baseName: 'rust-card-loop',
     crfH264: 28,
     crfVp9: 36,
   })
@@ -314,7 +322,7 @@ function encodeHeroClips(ff) {
     start: 0,
     duration: 8,
     width: 854,
-    baseName: 'apex-product-preview',
+    baseName: 'rust-product-preview',
     crfH264: 28,
     crfVp9: 35,
   })
@@ -332,3 +340,7 @@ const ff = resolveFfmpeg()
 encodeHeroClips(ff)
 await generateHeroPosters(ff)
 await generateGameplayResponsive()
+
+if (await generateThemeHeroFromBox(root, { mediaDir, ogDir })) {
+  console.log('Buy card exported from source-media/hero (gameplay stills unchanged)')
+}

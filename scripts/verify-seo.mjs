@@ -3,7 +3,7 @@ import { join, relative } from 'node:path'
 
 const root = join(import.meta.dirname, '..')
 const dist = join(root, 'dist')
-const site = 'https://apexlegendscheats.org'
+const site = 'https://rustcheats.io'
 const failures = []
 
 if (!existsSync(dist)) {
@@ -40,7 +40,7 @@ function jsonLdFromHtml(html) {
 }
 
 const keywordListInJsonLd = /"@type"\s*:\s*"KeywordList"/
-const metaKeywordsSample = '<meta name="keywords" content="apex legends cheats">'
+const metaKeywordsSample = '<meta name="keywords" content="rust cheats">'
 if (keywordListInJsonLd.test(metaKeywordsSample)) {
   fail('verify-seo regression: meta keywords must not match KeywordList detector')
 }
@@ -90,7 +90,7 @@ for (const file of files) {
 }
 
 const home = readFileSync(join(dist, 'index.html'), 'utf8')
-const product = readFileSync(join(dist, 'apex-legends-cheats', 'index.html'), 'utf8')
+const product = readFileSync(join(dist, 'rust-cheats', 'index.html'), 'utf8')
 const reviews = readFileSync(join(dist, 'reviews', 'index.html'), 'utf8')
 const faq = readFileSync(join(dist, 'faq', 'index.html'), 'utf8')
 const support = readFileSync(join(dist, 'support', 'index.html'), 'utf8')
@@ -103,13 +103,18 @@ const importantPages = [
   readFileSync(join(dist, 'forums', 'index.html'), 'utf8'),
 ]
 
-if (!home.includes('name="keywords"') || !home.includes('apex legends cheats')) {
-  fail('Homepage must include meta keywords with apex legends cheats')
+if (!home.includes('name="keywords"') || !home.includes('rust cheats')) {
+  fail('Homepage must include meta keywords with rust cheats')
 }
-if (!home.includes('<title>Apex Legends Cheats | ESP, Aimbot &amp; Radar for PC</title>')) {
-  fail('Homepage does not own the exact transactional title')
+if (!home.includes('<title>Rust Cheats — Aimbot, ESP &amp; Hacks for PC</title>')) {
+  fail('Homepage does not own the brand/category title')
 }
-if (product.includes('<title>Buy Apex Legends Cheats')) fail('Product details page competes with homepage')
+if (!product.includes('<title>Buy Rust Cheats')) {
+  fail('Product page must own transactional Buy Rust Cheats title')
+}
+if (!product.includes('<title>Buy Rust Cheats — Aimbot, ESP &amp; Hacks</title>')) {
+  fail('Product page title must be Buy Rust Cheats — Aimbot, ESP & Hacks')
+}
 if ((faq.match(/"@type":"FAQPage"/g) || []).length !== 1) fail('/faq must own one FAQPage')
 for (const [name, html] of [
   ['home', home],
@@ -123,16 +128,18 @@ for (const [name, html] of [
   ['home', home],
   ['product', product],
 ]) {
-  if (!html.includes('"@id":"https://apexlegendscheats.org/#product"')) {
-    fail(`${name}: missing shared Product ID`)
+  if (!html.includes('"@id":"https://rustcheats.io/rust-cheats#product"')) {
+    fail(`${name}: missing shared Product ID on /rust-cheats#product`)
   }
+}
+if (home.includes('"@type":"Product"')) {
+  fail('Homepage must not define a Product node (reference Product @id only)')
 }
 if (reviews.includes('"@type":"Review"') || reviews.includes('"@type":"AggregateRating"')) {
   fail('/reviews must not emit Review or AggregateRating schema (on-page reviews only)')
 }
-if (!product.includes('<title>Apex Legends Cheats Features &amp; Price | ESP, Radar, Aim</title>')) {
-  fail('Product page title must target features and price, not homepage keywords alone')
-}
+if (home.includes('"@type":"Offer"')) fail('Homepage must not emit Offer schema')
+if (!product.includes('"@type":"Offer"')) fail('Product page must emit Offer schema')
 if (support.includes('noindex')) fail('Support page must be indexable')
 for (const file of files) {
   const page = relative(dist, file).replaceAll('\\', '/')
@@ -142,15 +149,12 @@ for (const file of files) {
 }
 for (const html of importantPages) {
   if (
-    !html.includes('/media/apex-legends-') &&
-    !html.includes('youtube-nocookie.com/embed/') &&
-    !html.includes('/videos/apex-product-preview')
+    !html.includes('/media/rust-') &&
+    !html.includes('/videos/rust-') &&
+    !html.includes('rust-hero-poster')
   ) {
-    fail('An important indexed page is missing visible Apex Legends media')
+    fail('An important indexed page is missing visible Rust media')
   }
-}
-if (!home.includes('youtube-nocookie.com/embed/bZ2kGpS_gQ4')) {
-  fail('Homepage is missing the official Apex Legends trailer')
 }
 
 const CHILD_SITEMAPS = [
@@ -187,13 +191,13 @@ const expectedUrls = new Set(
 const parsePageLocs = (xml) =>
   [...xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
 const requiredImages = [
-  '/media/apex-legends-soldier-hero.jpg',
-  '/media/apex-legends-battle-royale.jpg',
-  '/media/apex-legends-ranked-squad.jpg',
-  '/media/apex-legends-product-hero.webp',
-  '/media/apex-legends-product-cover.webp',
-  '/og/apex-legends-cheats.jpg',
-  '/media/apex-hero-poster.jpg',
+  '/media/rust-soldier-hero.jpg',
+  '/media/rust-monument.jpg',
+  '/media/rust-raid-party.jpg',
+  '/media/rust-product-hero.webp',
+  '/media/rust-product-cover.webp',
+  '/og/rust-cheats.jpg',
+  '/media/rust-hero-poster.jpg',
 ]
 
 const contentPageLocs = []
@@ -250,6 +254,9 @@ if (!existsSync(join(dist, 'robots.txt'))) fail('dist/robots.txt is missing')
 if (!existsSync(join(dist, '_routes.json'))) fail('dist/_routes.json is missing')
 
 const robots = readFileSync(join(dist, 'robots.txt'), 'utf8')
+if (!robots.includes(`Sitemap: ${site}/sitemap.xml`)) {
+  fail('robots.txt must declare the sitemap index Sitemap: …/sitemap.xml')
+}
 for (const child of CHILD_SITEMAPS) {
   if (!robots.includes(`Sitemap: ${site}/${child}`)) {
     fail(`robots.txt must declare Sitemap: ${site}/${child}`)
@@ -278,26 +285,31 @@ for (const child of CHILD_SITEMAPS) {
 }
 
 for (const asset of [
-  'public/og/apex-legends-cheats.jpg',
-  'public/media/apex-legends-product-hero.webp',
-  'public/media/apex-legends-product-cover.webp',
-  'public/media/apex-legends-soldier-hero.jpg',
-  'public/media/apex-legends-battle-royale.jpg',
-  'public/media/apex-legends-ranked-squad.jpg',
-  'public/videos/apex-card-loop.mp4',
-  'public/videos/apex-product-preview.mp4',
-  'public/media/apex-hero-poster.jpg',
-  'public/media/apex-hero-poster-640w.webp',
-  'public/media/apex-hero-poster-960w.webp',
-  'public/media/apex-hero-poster-1280w.webp',
-  'public/media/apex-legends-soldier-hero-800w.webp',
-  'public/media/apex-legends-battle-royale-800w.webp',
-  'public/media/apex-legends-ranked-squad-800w.webp',
+  'public/og/rust-cheats.jpg',
+  'public/media/rust-product-hero.webp',
+  'public/media/rust-product-cover.webp',
+  'public/media/rust-soldier-hero.jpg',
+  'public/media/rust-monument.jpg',
+  'public/media/rust-raid-party.jpg',
+  'public/media/rust-hero-poster.jpg',
+  'public/media/rust-hero-poster-640w.webp',
+  'public/media/rust-hero-poster-960w.webp',
+  'public/media/rust-hero-poster-1280w.webp',
+  'public/media/rust-soldier-hero-800w.webp',
+  'public/media/rust-monument-800w.webp',
+  'public/media/rust-raid-party-800w.webp',
   'public/sitemap.css',
   'public/_routes.json',
   'functions/_middleware.js',
 ]) {
   if (!existsSync(join(root, asset))) fail(`Missing first-party asset: ${asset}`)
+}
+
+const heroFootage = join(root, 'public', 'videos', 'rust-hero.mp4')
+if (existsSync(heroFootage)) {
+  for (const asset of ['public/videos/rust-card-loop.mp4', 'public/videos/rust-product-preview.mp4']) {
+    if (!existsSync(join(root, asset))) fail(`Missing first-party asset: ${asset}`)
+  }
 }
 
 const redirects = readFileSync(join(root, 'public', '_redirects'), 'utf8')

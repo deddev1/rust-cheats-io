@@ -7,7 +7,8 @@ import { SITE_NAME } from '../data/site'
 /** Lean nav — Reviews stay in footer. */
 const NAV_LINKS = [
   { label: 'Forums', to: '/forums' },
-  { label: 'Product', to: '/apex-legends-cheats' },
+  { label: 'Product', to: '/rust-cheats' },
+  { label: 'Status', to: '/status' },
   { label: 'Reviews', to: '/reviews' },
   { label: 'FAQ', to: '/faq' },
   { label: 'Support', to: '/support' },

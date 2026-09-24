@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { StatusPage } from '../views/StatusPage'
+import { SEO, SITE_URL } from '../data/site'
+import { LIVE_STATUS, STATUS_LOG } from '../data/status-log'
+import { PRODUCT_ID } from '../lib/seo'
+
+const jsonLdExtra = [
+  {
+    '@type': 'ItemList',
+    '@id': `${SITE_URL}/status#changelog`,
+    name: 'Rust Cheats status changelog',
+    description: `Live loader status: ${LIVE_STATUS}. Dated Undetected / Updating rebuild log.`,
+    numberOfItems: STATUS_LOG.length,
+    itemListElement: STATUS_LOG.map((entry, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${entry.date}: ${entry.status} — ${entry.title}`,
+      url: `${SITE_URL}/status`,
+    })),
+    about: { '@id': PRODUCT_ID },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Status', item: `${SITE_URL}/status` },
+    ],
+  },
+]
+---
+
+<BaseLayout seo={SEO.status} jsonLdExtra={jsonLdExtra}>
+  <StatusPage client:visible />
+</BaseLayout>

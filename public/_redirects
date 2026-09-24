@@ -1,10 +1,10 @@
 # Cloudflare Workers/Pages redirects (static files always win over these rules).
-# Host www/HTTP → HTTPS apex is handled by workers/site.js (not_found_handling serves 404.html).
+# Host www/HTTP → HTTPS canonical host is handled by workers/site.js (not_found_handling serves 404.html).
 
 # Trailing-slash canonicalization
-/apex-legends-cheats/ /apex-legends-cheats 301
-/wardogs-hacks        /apex-legends-cheats 301
-/wardogs-hacks/       /apex-legends-cheats 301
+/rust-cheats/ /rust-cheats 301
+/wardogs-hacks        /rust-cheats 301
+/wardogs-hacks/       /rust-cheats 301
 /forums/        /forums        301
 /reviews/       /reviews       301
 /faq/           /faq           301
@@ -22,15 +22,19 @@
 /terms-of-service /terms       301
 /terms-of-service/ /terms      301
 
-# Transactional keyword variants consolidate on the Apex product page
-/buy-apex-legends-cheats  /apex-legends-cheats 301
-/buy-apex-legends-cheats/ /apex-legends-cheats 301
-/thewardogs-hacks         /apex-legends-cheats 301
-/thewardogs-hacks/        /apex-legends-cheats 301
-/the-wardogs-hacks        /apex-legends-cheats 301
-/the-wardogs-hacks/       /apex-legends-cheats 301
-/buy-wardogs-hacks        /apex-legends-cheats 301
-/buy-wardogs-hacks/       /apex-legends-cheats 301
+# Transactional keyword variants consolidate on the Rust product page
+/apex-legends-cheats     /rust-cheats 301
+/apex-legends-cheats/    /rust-cheats 301
+/buy-apex-legends-cheats /rust-cheats 301
+/buy-apex-legends-cheats/ /rust-cheats 301
+/buy-rust-cheats  /rust-cheats 301
+/buy-rust-cheats/ /rust-cheats 301
+/thewardogs-hacks         /rust-cheats 301
+/thewardogs-hacks/        /rust-cheats 301
+/the-wardogs-hacks        /rust-cheats 301
+/the-wardogs-hacks/       /rust-cheats 301
+/buy-wardogs-hacks        /rust-cheats 301
+/buy-wardogs-hacks/       /rust-cheats 301
 
 # Legacy slugs → forums
 /articles       /forums        301
