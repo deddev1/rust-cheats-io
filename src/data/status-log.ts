@@ -18,9 +18,9 @@ export const LIVE_STATUS: GameStatus = GAMES[0]?.status ?? 'Updating'
 export const STATUS_LOG: StatusLogEntry[] = [
   {
     date: '2026-09-24',
-    status: 'Updating',
-    title: 'Post-patch rebuild in progress',
-    body: 'Rust / Easy Anti-Cheat update detected. Loader marked Updating — do not force an outdated build. Checkout remains open; wait for Undetected before you load.',
+    status: 'Undetected',
+    title: 'Build cleared — safe to load',
+    body: 'Current Rust Cheats loader is Undetected on Steam Windows builds. Player ESP, loot ESP, soft aim, stream-proof and HWID spoofer (when listed) are cleared to use.',
   },
   {
     date: '2026-09-20',

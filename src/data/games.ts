@@ -9,7 +9,7 @@ export type Game = {
 
 /** Site is Rust Cheats only — no other titles in the catalog. */
 export const GAMES: Game[] = [
-  { slug: 'rust', name: 'Rust', status: 'Updating', popular: true },
+  { slug: 'rust', name: 'Rust', status: 'Undetected', popular: true },
 ]
 
 export function getGame(slug: string) {
