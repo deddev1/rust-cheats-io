@@ -131,17 +131,20 @@ export function HomePage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {FEATURES.map(({ icon: Icon, label, desc }) => (
-                <a
+                <div
                   key={label}
-                  href="/rust-cheats"
                   className="page-card flex h-full min-h-[168px] flex-col rounded-2xl p-5 transition-colors hover:border-white/20"
                 >
                   <div className="icon-well mb-4">
                     <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-sm font-semibold text-white">{label}</h3>
+                  <h3 className="text-sm font-semibold text-white">
+                    <a href="/rust-cheats" className="hover:text-z-soft">
+                      {label}
+                    </a>
+                  </h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-white/55">{desc}</p>
-                </a>
+                </div>
               ))}
             </div>
           </div>
@@ -172,14 +175,15 @@ export function HomePage() {
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {BLOGS.slice(0, 3).map((post) => (
-                <a
+                <article
                   key={post.slug}
-                  href={blogPath(post.slug)}
                   className="page-card group flex h-full flex-col rounded-2xl p-5 sm:p-6"
                 >
                   <p className="text-xs uppercase tracking-wider text-white/45">{post.tag}</p>
                   <h3 className="mt-2 text-lg font-semibold tracking-tight text-white">
-                    {post.title}
+                    <a href={blogPath(post.slug)} className="hover:text-z-soft">
+                      {post.title}
+                    </a>
                   </h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-white/55">
                     {post.excerpt}
@@ -189,7 +193,7 @@ export function HomePage() {
                     strokeWidth={1.75}
                     aria-hidden
                   />
-                </a>
+                </article>
               ))}
             </div>
 
@@ -227,21 +231,21 @@ export function HomePage() {
                     href="/rust-cheats"
                     className="text-white underline underline-offset-2 hover:text-z-soft"
                   >
-                    Rust feature list
+                    product specs
                   </a>
                   ,{' '}
                   <a
                     href="/reviews"
                     className="text-white underline underline-offset-2 hover:text-z-soft"
                   >
-                    buyer reviews
+                    player feedback
                   </a>
                   , or{' '}
                   <a
                     href="/support"
                     className="text-white underline underline-offset-2 hover:text-z-soft"
                   >
-                    loader help
+                    support desk
                   </a>
                   .
                 </p>

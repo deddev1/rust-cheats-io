@@ -66,11 +66,11 @@ export const SITE_PAGE_LINKS = [
 
 /** Forum thread deep links — unique short anchors (no repeated “guide”). */
 export const SITE_GUIDE_LINKS = [
-  { label: 'Features list', to: blogPath('features-list') },
-  { label: 'Hotkeys', to: blogPath('hotkeys') },
-  { label: 'Complete setup', to: blogPath('complete-setup') },
-  { label: 'Antivirus', to: blogPath('disable-antivirus') },
-  { label: 'Undetected status', to: blogPath('undetected-status') },
+  { label: 'ESP checklist', to: blogPath('features-list') },
+  { label: 'Menu keys', to: blogPath('hotkeys') },
+  { label: 'Load steps', to: blogPath('complete-setup') },
+  { label: 'AV allowlist', to: blogPath('disable-antivirus') },
+  { label: 'Status guide', to: blogPath('undetected-status') },
 ] as const
 
 /**

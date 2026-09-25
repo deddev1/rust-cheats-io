@@ -15,11 +15,11 @@ const HUB_LINKS = [
 ] as const
 
 const GUIDE_LINKS = [
-  { href: '/forums/features-list', label: 'Features list' },
-  { href: '/forums/complete-setup', label: 'Complete setup' },
-  { href: '/forums/disable-antivirus', label: 'Antivirus' },
-  { href: '/forums/undetected-status', label: 'Undetected status' },
-  { href: '/forums/hotkeys', label: 'Hotkeys' },
+  { href: '/forums/features-list', label: 'ESP checklist' },
+  { href: '/forums/complete-setup', label: 'Load steps' },
+  { href: '/forums/disable-antivirus', label: 'AV allowlist' },
+  { href: '/forums/undetected-status', label: 'Status guide' },
+  { href: '/forums/hotkeys', label: 'Menu keys' },
 ] as const
 
 /** Brand footer with lean crawl hub + policy links. */

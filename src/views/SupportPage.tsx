@@ -98,7 +98,7 @@ export function SupportPage() {
                 href="/rust-cheats"
                 className="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
               >
-                Product details
+                Product page
               </a>
               <CheckoutLink className="cta-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">
                 Buy Rust Cheats

@@ -32,7 +32,7 @@ export const BLOGS: BlogPost[] = [
       'Full features list before you buy Rust Cheats — player ESP, loot ESP, soft aim Aimbot and stream-proof options.',
     metaTitle: 'Rust Cheats ESP, Wallhack & Soft Aim Feature List',
     metaDescription:
-      'Compare Rust Cheats player ESP, loot ESP, wallhack, soft aim Aimbot, HWID spoofer and stream-proof features included before you checkout on Steam.',
+      'Compare Rust Cheats player ESP, loot ESP, wallhack, soft aim, HWID spoofer, and stream-proof options before checkout.',
     searchTerms: 'features player esp loot esp wallhack soft aim stream-proof aimbot spoofer hwid',
     date: '2026-09-15',
     dateModified: '2026-09-20',
@@ -74,7 +74,7 @@ export const BLOGS: BlogPost[] = [
       'Hotkeys and menu keys for Rust Cheats after load — open menu, toggles, and what to leave unbound.',
     metaTitle: 'Rust ESP Menu Hotkeys | Post-Checkout Setup',
     metaDescription:
-      'Hotkeys for Rust Cheats after you buy and load: open menu, ESP toggles, wallhack, soft aim Aimbot and spoofer keys — simple key list for Steam Rust.',
+      'Hotkeys for Rust Cheats after load: menu, ESP toggles, wallhack, soft aim, and spoofer keys for Steam Rust.',
     searchTerms: 'hotkeys menu keys esp toggle wallhack soft aim aimbot spoofer',
     date: '2026-09-15',
     dateModified: '2026-09-20',
@@ -114,7 +114,7 @@ export const BLOGS: BlogPost[] = [
       'Complete setup for Rust Cheats: buy, disable blockers, launch Rust, load, enable ESP, confirm hotkeys.',
     metaTitle: 'Complete Rust Loader Setup & Load Order',
     metaDescription:
-      'Complete setup after checkout: delivery checklist, antivirus exclusions, Rust load order, troubleshooting, ESP configuration and hotkeys.',
+      'Complete Rust Cheats setup after checkout: delivery, antivirus exclusions, load order, ESP config, and hotkeys.',
     searchTerms: 'complete setup instructions load checklist loader order esp enable wallhack',
     date: '2026-09-15',
     dateModified: '2026-09-20',
@@ -176,7 +176,7 @@ export const BLOGS: BlogPost[] = [
       'Turn off or allowlist antivirus so Rust Cheats loader can run after purchase — Windows Defender and common AV steps.',
     metaTitle: 'Rust Loader Antivirus Exclusions | Windows Defender',
     metaDescription:
-      'How to turn off or allowlist antivirus for Rust Cheats after you buy — Defender exclusions, false positives, then load on Undetected.',
+      'Allowlist antivirus for Rust Cheats — Defender exclusions, false positives, then load when Undetected.',
     searchTerms: 'disable antivirus defender exclusion allowlist loader false positive',
     date: '2026-09-15',
     dateModified: '2026-09-20',
@@ -221,7 +221,7 @@ export const BLOGS: BlogPost[] = [
       'Undetected vs Updating for Rust Cheats — check status before checkout and before every load after a Rust patch.',
     metaTitle: 'Rust Loader Status | Undetected or Updating',
     metaDescription:
-      'Check live Undetected or Updating status for Rust Cheats before checkout and before every load after a Rust or Easy Anti-Cheat patch on Steam.',
+      'Check Undetected or Updating status for Rust Cheats before checkout and every load after a Rust or EAC patch.',
     searchTerms: 'undetected status updating eac patch load checkout changelog',
     date: '2026-09-15',
     dateModified: '2026-09-20',

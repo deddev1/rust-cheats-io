@@ -58,7 +58,7 @@ export function StatusPage() {
                   href="/rust-cheats"
                   className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
                 >
-                  Product details
+                  View product
                 </a>
                 <CheckoutLink className="cta-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
                   Buy Rust Cheats
@@ -79,7 +79,7 @@ export function StatusPage() {
                 href={blogPath('undetected-status')}
                 className="text-z-soft underline-offset-2 hover:underline"
               >
-                Undetected status
+                Status guide
               </a>{' '}
               before checkout.
             </p>

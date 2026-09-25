@@ -45,11 +45,11 @@ export const STATUS_LOG: StatusLogEntry[] = [
 export const STATUS_PAGE = {
   title: 'Rust Cheats Status & Changelog | Undetected Log',
   description:
-    'Live Rust Cheats loader status and dated changelog — Undetected vs Updating after every Rust and Easy Anti-Cheat patch before you buy or load on Steam.',
+    'Live Rust Cheats loader status and changelog — Undetected vs Updating after Rust and EAC patches before you load.',
   path: '/status',
   keywords:
     'rust cheats status, rust undetected, rust updating, rust eac status, rust cheat changelog, rust loader status',
   h1: 'Rust Cheats status & changelog',
   intro:
-    'Live Easy Anti-Cheat status for Rust Cheats on rustcheats.io, plus a dated rebuild log. Confirm Undetected here or on the product page before every load.',
+    'Live Easy Anti-Cheat status for Rust Cheats on rustcheats.io, plus a dated rebuild log. Confirm Undetected here or on the buy page before every load.',
 } as const

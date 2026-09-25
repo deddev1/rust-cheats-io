@@ -128,21 +128,21 @@ export function GameProductPage({ guideSlug }: GameProductPageProps) {
                   href={blogPath('complete-setup')}
                   className="text-white underline underline-offset-2 hover:text-z-soft"
                 >
-                  Complete Setup
+                  Load order
                 </a>
                 {' · '}
                 <a
                   href={blogPath('disable-antivirus')}
                   className="text-white underline underline-offset-2 hover:text-z-soft"
                 >
-                  Antivirus
+                  AV exclusions
                 </a>
                 {' · '}
                 <a
                   href={blogPath('undetected-status')}
                   className="text-white underline underline-offset-2 hover:text-z-soft"
                 >
-                  Undetected status
+                  Status guide
                 </a>
               </p>
             </div>
@@ -219,7 +219,7 @@ export function GameProductPage({ guideSlug }: GameProductPageProps) {
                         href={blogPath('complete-setup')}
                         className="text-white underline underline-offset-2 hover:text-z-soft"
                       >
-                        setup load order
+                        post-checkout steps
                       </a>{' '}
                       after delivery.
                     </li>
@@ -255,19 +255,19 @@ export function GameProductPage({ guideSlug }: GameProductPageProps) {
                     </a>
                     . For cheats on {SITE_HOST}:{' '}
                     <a href="/reviews" className="text-white underline underline-offset-2 hover:text-z-soft">
-                      buyer reviews
+                      ratings
                     </a>
                     ,{' '}
                     <a href="/support" className="text-white underline underline-offset-2 hover:text-z-soft">
-                      loader help
+                      order support
                     </a>
                     ,{' '}
                     <a href="/refunds" className="text-white underline underline-offset-2 hover:text-z-soft">
-                      refund policy
+                      refund rules
                     </a>
                     , and{' '}
                     <a href="/forums" className="text-white underline underline-offset-2 hover:text-z-soft">
-                      setup forums
+                      buyer forums
                     </a>
                     .
                   </p>

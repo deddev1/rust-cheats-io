@@ -109,9 +109,8 @@ export function ForumsPage({ initialQuery = '' }: ForumsPageProps) {
             ) : (
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((post) => (
-                  <a
+                  <article
                     key={post.slug}
-                    href={blogPath(post.slug)}
                     className="page-card group flex h-full flex-col rounded-2xl p-5 sm:p-6"
                   >
                     <div className="flex items-center justify-between gap-2">
@@ -121,7 +120,9 @@ export function ForumsPage({ initialQuery = '' }: ForumsPageProps) {
                       <span className="text-xs text-white/35">{post.readMinutes} min</span>
                     </div>
                     <h3 className="mt-3 text-base font-semibold tracking-tight text-white sm:text-lg">
-                      {post.title}
+                      <a href={blogPath(post.slug)} className="hover:text-z-soft">
+                        {post.title}
+                      </a>
                     </h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-white/55">
                       {post.excerpt}
@@ -131,7 +132,7 @@ export function ForumsPage({ initialQuery = '' }: ForumsPageProps) {
                       strokeWidth={1.75}
                       aria-hidden
                     />
-                  </a>
+                  </article>
                 ))}
               </div>
             )}

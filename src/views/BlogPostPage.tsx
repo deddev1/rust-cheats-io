@@ -82,11 +82,11 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
                 Check live Undetected status, then buy ESP, wallhack, soft aim and HWID
                 spoofer for Rust on {SITE_HOST}. Need help? Read{' '}
                 <a href="/support" className="text-white/80 underline-offset-2 hover:underline">
-                  loader help
+                  get help
                 </a>
                 {' '}or{' '}
                 <a href="/reviews" className="text-white/80 underline-offset-2 hover:underline">
-                  buyer reviews
+                  read reviews
                 </a>
                 . Own the game via{' '}
                 <a
@@ -123,7 +123,7 @@ export function BlogPostPage({ slug }: BlogPostPageProps) {
               className="mt-10 inline-flex items-center gap-1.5 text-sm text-white/55 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" strokeWidth={1.75} />
-              All forum threads
+              All threads
             </a>
           </div>
         </article>

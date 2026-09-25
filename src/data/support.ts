@@ -12,21 +12,21 @@ export const SUPPORT_INTRO =
   'Support for Rust Cheats buyers on rustcheats.io — loader setup, Undetected status, menu config and delivery help after you purchase.'
 
 export const SUPPORT_LEAD =
-  'Setup forums live in the [forums](/forums). Start with [Complete Setup](/forums/complete-setup) before opening a ticket.'
+  'Setup forums live in the [forums](/forums). Start with the [setup guide](/forums/complete-setup) before opening a ticket.'
 
 /** Numbered “How we help” steps — support layout. */
 export const SUPPORT_STEPS: SupportStep[] = [
   {
     title: 'Status before you load',
-    body: 'Confirm Undetected on the [product page](/rust-cheats) after every Rust / EAC patch. If status is Updating, wait — do not force an outdated build.',
+    body: 'Confirm Undetected on the [buy page](/rust-cheats) after every Rust / EAC patch. If status is Updating, wait — do not force an outdated build.',
   },
   {
     title: 'Loader and menu issues',
-    body: 'Follow [Complete Setup](/forums/complete-setup) for the current load order and antivirus exclusions. If an Undetected build still fails after one clean retry, open a request with your order ID.',
+    body: 'Follow the [load-order guide](/forums/complete-setup) for the current load order and antivirus exclusions. If an Undetected build still fails after one clean retry, open a request with your order ID.',
   },
   {
     title: 'Delivery and refunds',
-    body: 'Delivery failures and extended Updating windows are covered on the [Refunds](/refunds) page. Include your order ID when you write in.',
+    body: 'Delivery failures and extended Updating windows are covered on the [refund rules](/refunds). Include your order ID when you write in.',
   },
   {
     title: 'What we can and cannot help with',
@@ -41,11 +41,11 @@ export const SUPPORT_FAQS: SupportFaq[] = [
   },
   {
     q: 'The loader will not open — what first?',
-    a: 'Do not spam launch. Restart Rust, confirm [antivirus exclusions](/forums/disable-antivirus), re-check Undetected status, then try one clean load from [Complete Setup](/forums/complete-setup). If it still fails, contact support with your order ID.',
+    a: 'Do not spam launch. Restart Rust, confirm [AV exclusions](/forums/disable-antivirus), re-check Undetected status, then try one clean load from [load steps](/forums/complete-setup). If it still fails, contact support with your order ID.',
   },
   {
     q: 'Menu opened once then never again?',
-    a: 'Re-check hotkeys in the [Hotkeys](/forums/hotkeys) guide, confirm the build is still Undetected, and avoid remapping mid-fight. If the menu stays dead after a clean reload, write in with your order ID and build name.',
+    a: 'Re-check hotkeys in the [menu keys](/forums/hotkeys) guide, confirm the build is still Undetected, and avoid remapping mid-fight. If the menu stays dead after a clean reload, write in with your order ID and build name.',
   },
   {
     q: 'Do you support multiplayer Rust servers?',

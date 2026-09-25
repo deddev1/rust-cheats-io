@@ -20,7 +20,7 @@ export const POLICY_PAGES: PolicyPageContent[] = [
     path: '/privacy',
     title: 'Privacy Policy | Rust Cheats for PC',
     description:
-      'How rustcheats.io handles order details, delivery email, support messages and basic analytics when you browse or buy Rust Cheats on Steam.',
+      'How rustcheats.io handles order details, delivery email, support messages, and analytics when you buy Rust Cheats.',
     h1: 'Privacy Policy',
     intro:
       'This page explains what we collect when you browse rustcheats.io, buy a Rust Cheats license, or contact support — and what we do not collect.',
@@ -60,7 +60,7 @@ export const POLICY_PAGES: PolicyPageContent[] = [
     related: [
       { label: 'Terms of Use', to: '/terms' },
       { label: 'Refunds', to: '/refunds' },
-      { label: 'Support', to: '/support' },
+      { label: 'Help desk', to: '/support' },
     ],
   },
   {
@@ -107,7 +107,7 @@ export const POLICY_PAGES: PolicyPageContent[] = [
     related: [
       { label: 'Privacy Policy', to: '/privacy' },
       { label: 'Refunds', to: '/refunds' },
-      { label: 'Support', to: '/support' },
+      { label: 'Help desk', to: '/support' },
     ],
   },
   {
@@ -115,7 +115,7 @@ export const POLICY_PAGES: PolicyPageContent[] = [
     path: '/refunds',
     title: 'Refund Policy | Rust Cheats for PC',
     description:
-      'When Rust Cheats refunds apply for digital licenses, failed delivery and extended Updating status windows after purchase on rustcheats.io.',
+      'When Rust Cheats refunds apply — failed delivery and extended Updating windows after purchase.',
     h1: 'Refund Policy',
     intro:
       'Rust Cheats licenses are digital goods. This page covers when we can refund, when we cannot, and how to open a request with your order ID.',
@@ -149,7 +149,7 @@ export const POLICY_PAGES: PolicyPageContent[] = [
     related: [
       { label: 'Terms of Use', to: '/terms' },
       { label: 'Privacy Policy', to: '/privacy' },
-      { label: 'Support', to: '/support' },
+      { label: 'Help desk', to: '/support' },
     ],
   },
 ]

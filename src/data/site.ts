@@ -9,7 +9,7 @@ export const SITE_HOST = 'rustcheats.io'
  * Single-product site for Rust Cheats on Windows PC.
  */
 export const SITE_PURPOSE =
-  'Rust Cheats is the single product on rustcheats.io — player ESP, loot ESP, soft aim Aimbot, wallhack, HWID spoofer and live Undetected status for Facepunch’s Rust on Windows PC / Steam.'
+  'Rust Cheats on rustcheats.io — player ESP, loot ESP, soft aim Aimbot, wallhack, HWID spoofer, and live Undetected status for Steam Rust.'
 
 export const SITE_ABOUT = [
   'Rust Cheats',
@@ -55,7 +55,7 @@ export const SEO = {
   home: {
     title: 'Rust Cheats — Aimbot, ESP & Hacks for PC',
     description:
-      'Rust Cheats for Windows PC — soft aim Aimbot with FOV and smoothing, player and loot ESP, wallhack boxes, stream-proof overlays and live loader status on Steam.',
+      'Rust Cheats for Windows PC: soft aim Aimbot, player and loot ESP, wallhack, stream-proof overlays, and live Steam loader status.',
     keywords:
       'rust cheats, rust hacks, rust esp, rust aimbot, rust wallhack, rust cheats pc, undetected rust cheats, eac rust, steam rust cheats',
     path: '/',
@@ -66,7 +66,7 @@ export const SEO = {
   forums: {
     title: 'Rust Cheats Guides | Setup, Hotkeys & Status',
     description:
-      'Rust Cheats buyer guides for features, hotkeys, complete setup, antivirus exclusions and Undetected vs Updating loader status on current Steam Windows builds.',
+      'Buyer guides for Rust Cheats features, hotkeys, setup, antivirus exclusions, and Undetected vs Updating status.',
     keywords:
       'rust cheats guide, rust hacks setup, rust loader, rust hotkeys, rust antivirus exclusion, rust undetected status',
     path: '/forums',
@@ -77,7 +77,7 @@ export const SEO = {
   reviews: {
     title: 'Rust Cheats Reviews | Before You Buy',
     description:
-      'Player feedback on Rust Cheats ESP, soft aim Aimbot, wallhack, HWID spoofer honesty and post-patch rebuilds — read before you choose a license on rustcheats.io.',
+      'Player feedback on Rust Cheats ESP, soft aim, wallhack, and HWID spoofer honesty — read before you pick a license.',
     keywords:
       'rust cheats reviews, rust hacks reviews, buy rust cheats, rust esp review, undetected rust cheats review',
     path: '/reviews',
@@ -88,7 +88,7 @@ export const SEO = {
   faq: {
     title: 'Rust Cheats FAQ | Compatibility, Setup & Status',
     description:
-      'Answers on EAC status, ESP, Aimbot, wallhack, HWID spoofer, Steam compatibility, loading, support and refunds — clear FAQ before you checkout on rustcheats.io.',
+      'FAQ on EAC status, ESP, Aimbot, wallhack, HWID spoofer, Steam setup, support, and refunds before you checkout.',
     keywords:
       'rust cheats faq, rust hacks faq, rust esp faq, rust aimbot faq, rust undetected faq, buy rust cheats',
     path: '/faq',
@@ -99,7 +99,7 @@ export const SEO = {
   support: {
     title: 'Rust Cheats Support | Loader & Setup Help',
     description:
-      'Rust Cheats support for digital delivery, Windows loader setup, antivirus exclusions, Updating windows and order-specific help after you buy on rustcheats.io.',
+      'Help with Rust Cheats delivery, Windows loader setup, antivirus exclusions, and Updating windows after purchase.',
     keywords:
       'rust cheats support, rust hacks loader help, rust inject help, rust cheat delivery, rust setup support',
     path: '/support',
@@ -110,7 +110,7 @@ export const SEO = {
   status: {
     title: 'Rust Cheats Status & Changelog | Undetected Log',
     description:
-      'Live Rust Cheats loader status and dated changelog — Undetected vs Updating after every Rust and Easy Anti-Cheat patch before you buy or load on Steam.',
+      'Live Rust Cheats loader status and changelog — Undetected vs Updating after Rust and EAC patches before you load.',
     keywords:
       'rust cheats status, rust undetected, rust updating, rust eac status, rust cheat changelog, rust loader status',
     path: '/status',
@@ -121,7 +121,7 @@ export const SEO = {
   product: {
     title: 'Buy Rust Cheats — Aimbot, ESP & Hacks',
     description:
-      'Buy Rust Cheats for Windows PC — soft aim Aimbot, player and loot ESP, wallhack, HWID spoofer, stream-proof overlays, live Undetected status and pricing.',
+      'Buy Rust Cheats for Windows PC — soft aim Aimbot, player and loot ESP, wallhack, HWID spoofer, and live Undetected status.',
     keywords:
       'buy rust cheats, rust hacks price, rust esp cheat, rust aimbot, rust wallhack, rust undetected cheat',
     path: '/rust-cheats',
@@ -134,7 +134,7 @@ export const SEO = {
 export const HOME_HEADINGS = {
   h1: 'Rust Cheats — Aimbot, ESP & Hacks',
   lead:
-    'Rust Cheats for Windows PC — soft aim Aimbot with FOV and smoothing, player and loot ESP, wallhack boxes, stream-proof overlays and live loader status on Steam.',
+    'Rust Cheats for Windows PC: soft aim Aimbot, player and loot ESP, wallhack, stream-proof overlays, and live Steam loader status.',
   h2Features: 'Rust Aimbot, ESP, loot ESP & wallhack',
   h2Featured: 'Rust ESP and soft aim',
   h2About: 'Built for current Rust wipes and patches',

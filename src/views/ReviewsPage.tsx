@@ -44,15 +44,15 @@ export function ReviewsPage() {
               Rust Cheats reviews before you buy — ESP accuracy, Undetected honesty, and
               whether the build held after the last patch. See the{' '}
               <a href="/rust-cheats" className="text-white/80 underline-offset-2 hover:underline">
-                features &amp; price
+                pricing
               </a>
               ,{' '}
               <a href="/support" className="text-white/80 underline-offset-2 hover:underline">
-                loader help
+                contact support
               </a>
               , or{' '}
               <a href="/forums" className="text-white/80 underline-offset-2 hover:underline">
-                setup forums
+                guide index
               </a>
               . Play Rust via{' '}
               <a
@@ -147,7 +147,7 @@ export function ReviewsPage() {
               <p className="mt-3 text-sm leading-relaxed text-white/55">
                 Open the guide, confirm Undetected status, then checkout — or visit{' '}
                 <a href="/support" className="text-white underline-offset-2 hover:underline">
-                  setup help
+                  ticket help
                 </a>{' '}
                 for load and inject help.
               </p>
